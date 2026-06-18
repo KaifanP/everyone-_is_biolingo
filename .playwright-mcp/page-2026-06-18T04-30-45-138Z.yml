@@ -1,0 +1,103 @@
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e331] [cursor=pointer]:
+    - img [ref=e332]
+  - alert [ref=e335]
+  - main [ref=e336]:
+    - generic [ref=e337]:
+      - link "← 返回课程概览" [ref=e339] [cursor=pointer]:
+        - /url: /grammar
+      - generic [ref=e340]:
+        - paragraph [ref=e341]: 模块1：时态与体态
+        - heading "第1单元：时态体系总览" [level=1] [ref=e342]
+        - paragraph [ref=e343]: Tense System Overview
+      - generic [ref=e344]:
+        - heading "🎯 学习目标" [level=2] [ref=e345]
+        - list [ref=e346]:
+          - listitem [ref=e347]: • 理解英语时态的本质（时间 + 体态）
+          - listitem [ref=e348]: • 掌握12种时态的结构和基本用法
+          - listitem [ref=e349]: • 建立“时态思维”，克服中文无时态的思维惯性
+          - listitem [ref=e350]: • 识别并使用常见的时间标志词
+      - generic [ref=e352]:
+        - button "💡 导入" [ref=e353]:
+          - generic [ref=e354]: 💡
+          - generic [ref=e355]: 导入
+        - button "📖 讲解" [ref=e357]:
+          - generic [ref=e358]: 📖
+          - generic [ref=e359]: 讲解
+        - button "🔍 辨析" [ref=e360]:
+          - generic [ref=e361]: 🔍
+          - generic [ref=e362]: 辨析
+        - button "✏️ 练习" [ref=e363]:
+          - generic [ref=e364]: ✏️
+          - generic [ref=e365]: 练习
+        - button "🎯 产出" [ref=e366]:
+          - generic [ref=e367]: 🎯
+          - generic [ref=e368]: 产出
+        - button "📋 总结" [ref=e369]:
+          - generic [ref=e370]: 📋
+          - generic [ref=e371]: 总结
+      - generic [ref=e373]:
+        - generic [ref=e374]:
+          - heading "💡 思考题" [level=3] [ref=e375]
+          - generic [ref=e376]:
+            - paragraph [ref=e377]: 请看以下两个句子，思考它们的区别：
+            - paragraph [ref=e378]:
+              - text: I
+              - strong [ref=e379]: eat
+              - text: breakfast every day.
+            - paragraph [ref=e380]:
+              - text: I
+              - strong [ref=e381]: am eating
+              - text: breakfast now.
+            - generic [ref=e382]:
+              - paragraph [ref=e383]: ✅ 答案：
+              - paragraph [ref=e384]:
+                - text: 第一句描述的是
+                - strong [ref=e385]: 习惯性动作
+                - text: （每天如此），第二句描述的是
+                - strong [ref=e386]: 正在发生的动作
+                - text: （此刻正在进行）。这种区别就是英语时态的作用。
+        - generic [ref=e387]:
+          - heading "🔄 中文 vs 英文" [level=3] [ref=e388]
+          - generic [ref=e389]:
+            - generic [ref=e390]:
+              - heading "🇨🇳 中文" [level=4] [ref=e391]
+              - generic [ref=e392]:
+                - generic [ref=e393]: 现在
+                - generic [ref=e394]: 我吃早餐。
+              - generic [ref=e395]:
+                - generic [ref=e396]: 过去
+                - generic [ref=e397]: 我昨天吃了早餐。
+              - generic [ref=e398]:
+                - generic [ref=e399]: 将来
+                - generic [ref=e400]: 我明天吃早餐。
+            - generic [ref=e401]:
+              - heading "🇬🇧 英文" [level=4] [ref=e402]
+              - generic [ref=e403]:
+                - generic [ref=e404]: 现在
+                - generic [ref=e405]:
+                  - text: I
+                  - strong [ref=e406]: eat
+                  - text: breakfast.
+              - generic [ref=e407]:
+                - generic [ref=e408]: 过去
+                - generic [ref=e409]:
+                  - text: I
+                  - strong [ref=e410]: ate
+                  - text: breakfast yesterday.
+              - generic [ref=e411]:
+                - generic [ref=e412]: 将来
+                - generic [ref=e413]:
+                  - text: I
+                  - strong [ref=e414]: will eat
+                  - text: breakfast tomorrow.
+          - paragraph [ref=e415]:
+            - text: 中文用时间词表示时间，动词不变；英文动词会
+            - strong [ref=e416]: 变形
+            - text: 来表示时间，这就是
+            - strong [ref=e417]: 时态（Tense）
+            - text: 。
+      - generic [ref=e418]:
+        - button "← 导入" [disabled] [ref=e419]
+        - generic [ref=e420]: 1 / 6
+        - button "讲解 →" [ref=e421]

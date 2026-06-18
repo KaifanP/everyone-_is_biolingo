@@ -1,0 +1,93 @@
+- generic [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e331] [cursor=pointer]:
+    - img [ref=e332]
+  - alert [ref=e335]
+  - main [ref=e336]:
+    - generic [ref=e337]:
+      - link "← 返回课程概览" [ref=e339] [cursor=pointer]:
+        - /url: /grammar
+      - generic [ref=e340]:
+        - paragraph [ref=e341]: 模块1：时态与体态
+        - heading "第1单元：时态体系总览" [level=1] [ref=e342]
+        - paragraph [ref=e343]: Tense System Overview
+      - generic [ref=e344]:
+        - heading "🎯 学习目标" [level=2] [ref=e345]
+        - list [ref=e346]:
+          - listitem [ref=e347]: • 理解英语时态的本质（时间 + 体态）
+          - listitem [ref=e348]: • 掌握12种时态的结构和基本用法
+          - listitem [ref=e349]: • 建立“时态思维”，克服中文无时态的思维惯性
+          - listitem [ref=e350]: • 识别并使用常见的时间标志词
+      - generic [ref=e352]:
+        - button "✓ 导入" [ref=e422]:
+          - generic [ref=e354]: ✓
+          - generic [ref=e355]: 导入
+        - button "✓ 讲解" [ref=e568]:
+          - generic [ref=e358]: ✓
+          - generic [ref=e359]: 讲解
+        - button "✓ 辨析" [ref=e569]:
+          - generic [ref=e361]: ✓
+          - generic [ref=e362]: 辨析
+        - button "✏️ 练习" [ref=e363]:
+          - generic [active] [ref=e364]: ✏️
+          - generic [ref=e365]: 练习
+        - button "🎯 产出" [ref=e366]:
+          - generic [ref=e367]: 🎯
+          - generic [ref=e368]: 产出
+        - button "📋 总结" [ref=e369]:
+          - generic [ref=e370]: 📋
+          - generic [ref=e371]: 总结
+      - generic [ref=e572]:
+        - generic [ref=e573]:
+          - heading "✏️ 练习" [level=3] [ref=e574]
+          - generic [ref=e575]:
+            - button "时态识别" [ref=e576]
+            - button "时态填空" [ref=e577]
+            - button "改错" [ref=e578]
+        - generic [ref=e580]:
+          - heading "时态识别" [level=4] [ref=e581]
+          - paragraph [ref=e582]: Tense Identification
+          - generic [ref=e583]:
+            - generic [ref=e584]:
+              - paragraph [ref=e585]:
+                - generic [ref=e586]: "1."
+                - generic [ref=e587]:
+                  - text: She
+                  - strong [ref=e588]: has lived
+                  - text: in London for five years.
+              - button "查看答案" [ref=e589]
+            - generic [ref=e590]:
+              - paragraph [ref=e591]:
+                - generic [ref=e592]: "2."
+                - generic [ref=e593]:
+                  - text: I
+                  - strong [ref=e594]: was reading
+                  - text: when he called.
+              - button "查看答案" [ref=e595]
+            - generic [ref=e596]:
+              - paragraph [ref=e597]:
+                - generic [ref=e598]: "3."
+                - generic [ref=e599]:
+                  - text: They
+                  - strong [ref=e600]: will have finished
+                  - text: by tomorrow.
+              - button "查看答案" [ref=e601]
+            - generic [ref=e602]:
+              - paragraph [ref=e603]:
+                - generic [ref=e604]: "4."
+                - generic [ref=e605]:
+                  - text: He
+                  - strong [ref=e606]: is always complaining
+                  - text: about the weather.
+              - button "查看答案" [ref=e607]
+            - generic [ref=e608]:
+              - paragraph [ref=e609]:
+                - generic [ref=e610]: "5."
+                - generic [ref=e611]:
+                  - text: The earth
+                  - strong [ref=e612]: goes
+                  - text: around the sun.
+              - button "查看答案" [ref=e613]
+      - generic [ref=e418]:
+        - button "← 辨析" [ref=e614]
+        - generic [ref=e420]: 4 / 6
+        - button "产出 →" [ref=e615]

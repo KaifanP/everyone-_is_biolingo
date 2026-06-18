@@ -1,0 +1,105 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - link "← 返回课程概览" [ref=e5] [cursor=pointer]:
+        - /url: /grammar
+      - generic [ref=e6]:
+        - paragraph [ref=e7]: 模块1：时态与体态
+        - heading "第2单元：现在完成时 vs 一般过去时" [level=1] [ref=e8]
+        - paragraph [ref=e9]: Present Perfect vs Simple Past
+      - generic [ref=e10]:
+        - heading "🎯 学习目标" [level=2] [ref=e11]
+        - list [ref=e12]:
+          - listitem [ref=e13]:
+            - generic [ref=e14]: "1"
+            - text: 清晰区分现在完成时和一般过去时的核心差异
+          - listitem [ref=e15]:
+            - generic [ref=e16]: "2"
+            - text: 根据语境正确选择时态
+          - listitem [ref=e17]:
+            - generic [ref=e18]: "3"
+            - text: 掌握两种时态的时间标志词
+          - listitem [ref=e19]:
+            - generic [ref=e20]: "4"
+            - text: 避免中文母语者常见错误
+      - generic [ref=e22]:
+        - button "💡 导入" [ref=e24]:
+          - generic [ref=e25]: 💡
+          - generic [ref=e26]: 导入
+        - button "📖 讲解" [ref=e30]:
+          - generic [ref=e31]: 📖
+          - generic [ref=e32]: 讲解
+        - button "🔍 辨析" [ref=e36]:
+          - generic [ref=e37]: 🔍
+          - generic [ref=e38]: 辨析
+        - button "✏️ 练习" [ref=e42]:
+          - generic [ref=e43]: ✏️
+          - generic [ref=e44]: 练习
+        - button "🎯 产出" [ref=e48]:
+          - generic [ref=e49]: 🎯
+          - generic [ref=e50]: 产出
+        - button "📋 总结" [ref=e54]:
+          - generic [ref=e55]: 📋
+          - generic [ref=e56]: 总结
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - heading "💡 思考题" [level=3] [ref=e60]:
+            - generic [ref=e61]: 💡
+            - text: 思考题
+          - generic [ref=e62]:
+            - paragraph [ref=e63]: 请看以下句子，思考它们的区别：
+            - generic [ref=e64]:
+              - paragraph [ref=e66]:
+                - text: I
+                - strong [ref=e67]: lost
+                - text: my key.（我丢了钥匙。）
+              - paragraph [ref=e69]:
+                - text: I
+                - strong [ref=e70]: have lost
+                - text: my key.（我丢了钥匙。）
+            - button "查看答案" [ref=e71]
+        - generic [ref=e72]:
+          - heading "🔄 中文 vs 英文" [level=3] [ref=e73]:
+            - generic [ref=e74]: 🔄
+            - text: 中文 vs 英文
+          - generic [ref=e75]:
+            - generic [ref=e76]:
+              - heading "🇨🇳 中文" [level=4] [ref=e77]
+              - generic [ref=e78]:
+                - generic [ref=e79]:
+                  - generic [ref=e80]: 两种说法，中文一样
+                  - generic [ref=e81]: 她去过巴黎。
+                - generic [ref=e82]:
+                  - generic [ref=e83]: 两种说法，中文一样
+                  - generic [ref=e84]: 她去过巴黎。
+            - generic [ref=e85]:
+              - heading "🇬🇧 英文" [level=4] [ref=e86]
+              - generic [ref=e87]:
+                - generic [ref=e88]:
+                  - generic [ref=e89]: 过去去了（可能还在那里）
+                  - generic [ref=e90]:
+                    - text: She
+                    - strong [ref=e91]: went
+                    - text: to Paris.
+                - generic [ref=e92]:
+                  - generic [ref=e93]: 去过（现在回来了，是经历）
+                  - generic [ref=e94]:
+                    - text: She
+                    - strong [ref=e95]: has been
+                    - text: to Paris.
+          - paragraph [ref=e97]:
+            - text: 💡
+            - generic [ref=e98]:
+              - text: 中文翻译一样，但英文
+              - strong [ref=e99]: 时态不同，含义不同
+              - text: 。现在完成时强调与
+              - strong [ref=e100]: 现在
+              - text: 的关联，一般过去时只描述
+              - strong [ref=e101]: 过去
+              - text: 的事实。
+      - generic [ref=e102]:
+        - button "← 导入" [disabled] [ref=e103]
+        - generic [ref=e104]: 1 / 6
+        - button "讲解 →" [ref=e105]
+  - button "Open Next.js Dev Tools" [ref=e111] [cursor=pointer]:
+    - img [ref=e112]

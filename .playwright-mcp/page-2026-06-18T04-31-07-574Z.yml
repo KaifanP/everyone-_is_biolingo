@@ -1,0 +1,192 @@
+- generic [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e331] [cursor=pointer]:
+    - img [ref=e332]
+  - alert [ref=e335]
+  - main [ref=e336]:
+    - generic [ref=e337]:
+      - link "← 返回课程概览" [ref=e339] [cursor=pointer]:
+        - /url: /grammar
+      - generic [ref=e340]:
+        - paragraph [ref=e341]: 模块1：时态与体态
+        - heading "第1单元：时态体系总览" [level=1] [ref=e342]
+        - paragraph [ref=e343]: Tense System Overview
+      - generic [ref=e344]:
+        - heading "🎯 学习目标" [level=2] [ref=e345]
+        - list [ref=e346]:
+          - listitem [ref=e347]: • 理解英语时态的本质（时间 + 体态）
+          - listitem [ref=e348]: • 掌握12种时态的结构和基本用法
+          - listitem [ref=e349]: • 建立“时态思维”，克服中文无时态的思维惯性
+          - listitem [ref=e350]: • 识别并使用常见的时间标志词
+      - generic [ref=e352]:
+        - button "✓ 导入" [ref=e422]:
+          - generic [ref=e354]: ✓
+          - generic [ref=e355]: 导入
+        - button "📖 讲解" [ref=e357]:
+          - generic [ref=e358]: 📖
+          - generic [ref=e359]: 讲解
+        - button "🔍 辨析" [ref=e360]:
+          - generic [ref=e361]: 🔍
+          - generic [ref=e362]: 辨析
+        - button "✏️ 练习" [ref=e363]:
+          - generic [ref=e364]: ✏️
+          - generic [ref=e365]: 练习
+        - button "🎯 产出" [ref=e366]:
+          - generic [ref=e367]: 🎯
+          - generic [ref=e368]: 产出
+        - button "📋 总结" [ref=e369]:
+          - generic [ref=e370]: 📋
+          - generic [ref=e371]: 总结
+      - generic [ref=e425]:
+        - generic [ref=e426]:
+          - heading "📖 时态的本质：时间 + 体态" [level=3] [ref=e427]
+          - generic [ref=e428]:
+            - generic [ref=e429]:
+              - heading "⏰ 时间（Time）" [level=4] [ref=e430]
+              - paragraph [ref=e431]: 动作发生在什么时候？
+              - generic [ref=e432]:
+                - paragraph [ref=e433]: 过去（Past）
+                - paragraph [ref=e434]: 动作发生在过去
+                - paragraph [ref=e435]:
+                  - text: I
+                  - strong [ref=e548]: walked
+                  - text: to school.
+              - generic [ref=e437]:
+                - paragraph [ref=e438]: 现在（Present）
+                - paragraph [ref=e439]: 动作发生在现在
+                - paragraph [ref=e440]:
+                  - text: I
+                  - strong [ref=e549]: walk
+                  - text: to school.
+              - generic [ref=e442]:
+                - paragraph [ref=e443]: 将来（Future）
+                - paragraph [ref=e444]: 动作发生在将来
+                - paragraph [ref=e445]:
+                  - text: I
+                  - strong [ref=e550]: will walk
+                  - text: to school.
+            - generic [ref=e447]:
+              - heading "🔄 体态（Aspect）" [level=4] [ref=e448]
+              - paragraph [ref=e449]: 动作处于什么状态？
+              - generic [ref=e450]:
+                - paragraph [ref=e451]: 一般（Simple）
+                - paragraph [ref=e452]: 单纯描述事实
+                - paragraph [ref=e453]: 强调：事实本身
+              - generic [ref=e454]:
+                - paragraph [ref=e455]: 进行（Continuous）
+                - paragraph [ref=e456]: 强调动作正在进行
+                - paragraph [ref=e457]: 强调：动作的持续性
+              - generic [ref=e458]:
+                - paragraph [ref=e459]: 完成（Perfect）
+                - paragraph [ref=e460]: 强调动作已完成或与现在有关
+                - paragraph [ref=e461]: 强调：动作的结果
+              - generic [ref=e462]:
+                - paragraph [ref=e463]: 完成进行（Perfect Continuous）
+                - paragraph [ref=e464]: 强调动作从过去持续到现在
+                - paragraph [ref=e465]: 强调：动作的持续过程
+        - generic [ref=e466]:
+          - heading "📊 时态矩阵图" [level=3] [ref=e467]
+          - table [ref=e469]:
+            - rowgroup [ref=e470]:
+              - row "一般（Simple） 进行（Continuous） 完成（Perfect） 完成进行（Perfect Continuous）" [ref=e471]:
+                - columnheader [ref=e472]
+                - columnheader "一般（Simple）" [ref=e473]
+                - columnheader "进行（Continuous）" [ref=e474]
+                - columnheader "完成（Perfect）" [ref=e475]
+                - columnheader "完成进行（Perfect Continuous）" [ref=e476]
+            - rowgroup [ref=e477]:
+              - row "现在 do/does am/is/are doing have/has done have/has been doing" [ref=e478]:
+                - cell "现在" [ref=e479]
+                - cell "do/does" [ref=e480]
+                - cell "am/is/are doing" [ref=e481]
+                - cell "have/has done" [ref=e482]
+                - cell "have/has been doing" [ref=e483]
+              - row "过去 did was/were doing had done had been doing" [ref=e484]:
+                - cell "过去" [ref=e485]
+                - cell "did" [ref=e486]
+                - cell "was/were doing" [ref=e487]
+                - cell "had done" [ref=e488]
+                - cell "had been doing" [ref=e489]
+              - row "将来 will do will be doing will have done will have been doing" [ref=e490]:
+                - cell "将来" [ref=e491]
+                - cell "will do" [ref=e492]
+                - cell "will be doing" [ref=e493]
+                - cell "will have done" [ref=e494]
+                - cell "will have been doing" [ref=e495]
+        - generic [ref=e496]:
+          - heading "📝 12种时态详解" [level=3] [ref=e497]
+          - generic [ref=e498]:
+            - button "一般现在时 Simple Present do/does" [ref=e499]:
+              - paragraph [ref=e500]: 一般现在时
+              - paragraph [ref=e501]: Simple Present
+              - paragraph [ref=e502]: do/does
+            - button "现在进行时 Present Continuous am/is/are + doing" [ref=e503]:
+              - paragraph [ref=e504]: 现在进行时
+              - paragraph [ref=e505]: Present Continuous
+              - paragraph [ref=e506]: am/is/are + doing
+            - button "现在完成时 Present Perfect have/has + done" [active] [ref=e507]:
+              - paragraph [ref=e508]: 现在完成时
+              - paragraph [ref=e509]: Present Perfect
+              - paragraph [ref=e510]: have/has + done
+            - button "现在完成进行时 Present Perfect Continuous have/has been + doing" [ref=e511]:
+              - paragraph [ref=e512]: 现在完成进行时
+              - paragraph [ref=e513]: Present Perfect Continuous
+              - paragraph [ref=e514]: have/has been + doing
+            - button "一般过去时 Simple Past did（动词过去式）" [ref=e515]:
+              - paragraph [ref=e516]: 一般过去时
+              - paragraph [ref=e517]: Simple Past
+              - paragraph [ref=e518]: did（动词过去式）
+            - button "过去进行时 Past Continuous was/were + doing" [ref=e519]:
+              - paragraph [ref=e520]: 过去进行时
+              - paragraph [ref=e521]: Past Continuous
+              - paragraph [ref=e522]: was/were + doing
+            - button "过去完成时 Past Perfect had + done" [ref=e523]:
+              - paragraph [ref=e524]: 过去完成时
+              - paragraph [ref=e525]: Past Perfect
+              - paragraph [ref=e526]: had + done
+            - button "过去完成进行时 Past Perfect Continuous had been + doing" [ref=e527]:
+              - paragraph [ref=e528]: 过去完成进行时
+              - paragraph [ref=e529]: Past Perfect Continuous
+              - paragraph [ref=e530]: had been + doing
+            - button "一般将来时 Simple Future will + do / be going to + do" [ref=e531]:
+              - paragraph [ref=e532]: 一般将来时
+              - paragraph [ref=e533]: Simple Future
+              - paragraph [ref=e534]: will + do / be going to + do
+            - button "将来进行时 Future Continuous will be + doing" [ref=e535]:
+              - paragraph [ref=e536]: 将来进行时
+              - paragraph [ref=e537]: Future Continuous
+              - paragraph [ref=e538]: will be + doing
+            - button "将来完成时 Future Perfect will have + done" [ref=e539]:
+              - paragraph [ref=e540]: 将来完成时
+              - paragraph [ref=e541]: Future Perfect
+              - paragraph [ref=e542]: will have + done
+            - button "将来完成进行时 Future Perfect Continuous will have been + doing" [ref=e543]:
+              - paragraph [ref=e544]: 将来完成进行时
+              - paragraph [ref=e545]: Future Perfect Continuous
+              - paragraph [ref=e546]: will have been + doing
+          - generic [ref=e551]:
+            - heading "现在完成时（Present Perfect）" [level=4] [ref=e552]
+            - paragraph [ref=e553]: 结构：have/has + done
+            - generic [ref=e554]:
+              - generic [ref=e555]:
+                - paragraph [ref=e556]: 过去发生，与现在有关
+                - paragraph [ref=e557]:
+                  - text: I
+                  - strong [ref=e558]: have lost
+                  - text: my key.（现在没钥匙）
+              - generic [ref=e559]:
+                - paragraph [ref=e560]: 经历
+                - paragraph [ref=e561]:
+                  - text: She
+                  - strong [ref=e562]: has been
+                  - text: to Paris three times.
+              - generic [ref=e563]:
+                - paragraph [ref=e564]: 从过去持续到现在
+                - paragraph [ref=e565]:
+                  - text: He
+                  - strong [ref=e566]: has lived
+                  - text: here since 2010.
+            - paragraph [ref=e567]: ⏰ 时间标志词：already, yet, just, ever, never, since, for, recently, so far
+      - generic [ref=e418]:
+        - button "← 导入" [ref=e419]
+        - generic [ref=e420]: 2 / 6
+        - button "辨析 →" [ref=e547]
