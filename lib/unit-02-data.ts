@@ -26,7 +26,7 @@ export const unit02Data: UnitData = {
     comparison: {
       chinese: [
         { text: "她去过巴黎。", note: "两种说法，中文一样" },
-        { text: "她去过巴黎。", note: "两种说法，中文一样" },
+        { text: "他丢了钥匙。", note: "两种说法，中文一样" },
       ],
       english: [
         { text: "She <strong>went</strong> to Paris.", note: "过去去了（可能还在那里）" },
@@ -161,7 +161,7 @@ export const unit02Data: UnitData = {
         { question: "He ______ (not/call) me since last Monday.", answer: "hasn't called — since是现在完成时标志词" },
         { question: "We ______ (meet) at the party last night.", answer: "met — last night是过去时标志词" },
         { question: "I ______ (read) three books this month.", answer: "have read — this month还没结束，用现在完成时" },
-        { question: "She ______ (work) at this company for five years before she resigned.", answer: "worked / had worked — before she resigned表明已结束" },
+        { question: "He ______ (live) in Paris for ten years and still lives there.", answer: "has lived — still lives there表明持续到现在" },
         { question: "______ you ______ (see) my phone? I can't find it.", answer: "Have, seen — 强调现在影响（找不到手机）" },
       ],
     },

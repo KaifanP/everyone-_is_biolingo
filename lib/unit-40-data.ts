@@ -17,10 +17,10 @@ export const unit40Data: UnitData = {
   leadIn: {
     thinkQuestions: {
       sentences: [
-        "Why are preposition usages so complex in English?",
-        "How to memorize numerous prepositional collocations?",
-        "Why do we say \u2018interested in\u2019 but not \u2018interested on\u2019?",
-        "What\u2019s the difference between \u2018good at\u2019 and \u2018good in\u2019?",
+        "为什么英语中介词用法这么复杂？",
+        "怎样才能记住大量的介词搭配？",
+        "为什么说 \u2018interested in\u2019 而不是 \u2018interested on\u2019？",
+        "\u2018good at\u2019 和 \u2018good in\u2019 有什么区别？",
       ],
       answer:
         "介词用法复杂是因为介词本身没有固定的中文对应，需要根据搭配和语境来判断。记忆搭配的关键是将介词与其搭配词作为一个整体来记忆，例如\u2018interested in\u2019、\u2018good at\u2019、\u2018depend on\u2019、\u2018look forward to\u2019等，而不是单独记忆介词。",
@@ -511,17 +511,19 @@ export const unit40Data: UnitData = {
       },
     ],
     mindMap:
-      "介词搭配 ─┬── 常用介词 ─┬── in (里面/时间)\n" +
-      "          │             ├── on (上面/日期)\n" +
-      "          │             ├── at (地点/时间点)\n" +
-      "          │             ├── by (通过/到\u2026时)\n" +
-      "          │             ├── with (和/用)\n" +
-      "          │             ├── for (为了/持续)\n" +
-      "          │             ├── from (从/来自)\n" +
-      "          │             └── to (到/向)\n" +
-      "          ├── 动词+介词 ── look at, listen to, wait for, depend on\n" +
-      "          ├── 形容词+介词 ── interested in, good at, afraid of\n" +
-      "          └── 名词+介词 ── reason for, solution to, interest in",
+      "介词搭配\n" +
+      "├── 常用介词\n" +
+      "│   ├── in (里面/时间)\n" +
+      "│   ├── on (上面/日期)\n" +
+      "│   ├── at (地点/时间点)\n" +
+      "│   ├── by (通过/到…时)\n" +
+      "│   ├── with (和/用)\n" +
+      "│   ├── for (为了/持续)\n" +
+      "│   ├── from (从/来自)\n" +
+      "│   └── to (到/向)\n" +
+      "├── 动词+介词 ── look at, listen to, wait for, depend on\n" +
+      "├── 形容词+介词 ── interested in, good at, afraid of\n" +
+      "└── 名词+介词 ── reason for, solution to, interest in",
     selfTest: [
       {
         question: "Which is correct?",

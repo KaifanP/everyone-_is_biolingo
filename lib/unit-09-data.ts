@@ -103,7 +103,7 @@ export const unit09Data: UnitData = {
           { label: "否定：不能", example: "I <strong>can't understand</strong> this." },
           { label: "疑问：能…吗？", example: "<strong>Can</strong> you swim?" },
         ],
-        timeWords: "",
+        timeWords: "now, currently, at the moment",
       },
       {
         name: "could：过去能力",
@@ -113,7 +113,7 @@ export const unit09Data: UnitData = {
           { label: "过去的一般能力", example: "I <strong>could swim</strong> when I was five." },
           { label: "过去不能", example: "I <strong>couldn't understand</strong> English at first." },
         ],
-        timeWords: "",
+        timeWords: "when I was young, as a child, in the past",
       },
       {
         name: "be able to：各种时态",
@@ -124,7 +124,7 @@ export const unit09Data: UnitData = {
           { label: "现在完成时", example: "She <strong>has been able to</strong> play piano since childhood." },
           { label: "过去成功完成", example: "He <strong>was able to</strong> escape from the fire." },
         ],
-        timeWords: "",
+        timeWords: "各种时态均可搭配使用",
       },
       {
         name: "could vs was able to",
@@ -134,7 +134,7 @@ export const unit09Data: UnitData = {
           { label: "一般能力用could", example: "He <strong>could swim</strong> when he was young." },
           { label: "具体完成用was able to", example: "He <strong>was able to</strong> swim across the river yesterday." },
         ],
-        timeWords: "",
+        timeWords: "一般能力用could，具体完成用was able to",
       },
       {
         name: "can：非正式许可",
@@ -145,7 +145,7 @@ export const unit09Data: UnitData = {
           { label: "给予许可", example: "You <strong>can</strong> leave now." },
           { label: "拒绝许可", example: "You <strong>can't</strong> park here." },
         ],
-        timeWords: "",
+        timeWords: "非正式场合，日常对话",
       },
       {
         name: "may：正式许可",
@@ -156,7 +156,7 @@ export const unit09Data: UnitData = {
           { label: "给予许可", example: "You <strong>may</strong> leave now." },
           { label: "拒绝许可", example: "Students <strong>may not</strong> use phones in class." },
         ],
-        timeWords: "",
+        timeWords: "正式场合，书面语",
       },
       {
         name: "could：礼貌请求",
@@ -167,7 +167,7 @@ export const unit09Data: UnitData = {
           { label: "请求许可", example: "<strong>Could</strong> I use your phone?" },
           { label: "比can更礼貌", example: "<strong>Could</strong> you open the window?" },
         ],
-        timeWords: "",
+        timeWords: "礼貌请求，比can更正式",
       },
       {
         name: "can：理论可能性",

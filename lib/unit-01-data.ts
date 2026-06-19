@@ -205,7 +205,7 @@ export const unit01Data: UnitData = {
           { label: "过去某时间之前一直在做", example: "I <strong>had been waiting</strong> for an hour when he finally came." },
           { label: "过去某动作的原因", example: "She was tired because she <strong>had been working</strong> all day." },
         ],
-        timeWords: "",
+        timeWords: "by the time, before, after, already, just, never",
       },
       {
         name: "一般将来时",
@@ -225,7 +225,7 @@ export const unit01Data: UnitData = {
           { label: "将来某一时刻正在进行", example: "This time tomorrow, I <strong>will be flying</strong> to London." },
           { label: "礼貌询问", example: "<strong>Will</strong> you <strong>be using</strong> the car tonight?" },
         ],
-        timeWords: "",
+        timeWords: "at this time tomorrow, at 8 pm tonight, when, while",
       },
       {
         name: "将来完成时",
@@ -243,7 +243,7 @@ export const unit01Data: UnitData = {
         usages: [
           { label: "将来某时间之前一直在做", example: "By December, I <strong>will have been working</strong> here for 10 years." },
         ],
-        timeWords: "",
+        timeWords: "by the time, by December, by + 将来时间, for + 时间段",
       },
     ],
   },
@@ -344,7 +344,7 @@ export const unit01Data: UnitData = {
       example: [
         "2010: 开始学英语 → I <strong>started</strong> learning English in 2010.",
         "2015: 通过六级考试 → I <strong>passed</strong> CET-6 in 2015.",
-        "现在: 仍然在学习 → I <strong>have been learning</strong> English for 13 years.",
+        "现在: 仍然在学习 → I <strong>have been learning</strong> English for many years.",
         "到2020年 → By 2020, I <strong>had passed</strong> CET-6.",
       ],
     },

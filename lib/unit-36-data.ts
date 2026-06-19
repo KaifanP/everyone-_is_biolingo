@@ -431,9 +431,16 @@ export const unit36Data: UnitData = {
       },
     ],
     mindMap:
-      "倒装句 → 全部倒装（方位副词 / 表语前置） + 部分倒装（否定词 / Only / So+Such / 也 / 虚拟省略if）\n" +
-      "  全部倒装: Here/There/Away + V + S（代词不倒装）; 表语/介词短语 + be + S\n" +
-      "  部分倒装: Never/Seldom/Hardly/No sooner/Not only/Not until + 助V + S + V; Only + 状语 + 助V + S + V; So/Such...that 助V + S + V; So/Neither/Nor + 助V + S; Had/Were/Should + S + V（省略if）",
+      "倒装句\n" +
+      "├── 全部倒装\n" +
+      "│   ├── 方位副词：Here/There/Away + V + S（代词不倒装）\n" +
+      "│   └── 表语前置：表语/介词短语 + be + S\n" +
+      "└── 部分倒装\n" +
+      "    ├── 否定词：Never/Seldom/Hardly/Not only + 助V + S\n" +
+      "    ├── Only + 状语：Only then did I realize...\n" +
+      "    ├── So/Such 强调：So beautiful was it that...\n" +
+      "    ├── 也/也不：So do I / Neither can she\n" +
+      "    └── 虚拟省略 if：Had I known / Were I you",
     selfTest: [
       {
         question: "Seldom _____ out on weekdays.",

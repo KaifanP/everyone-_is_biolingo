@@ -134,7 +134,7 @@ export const unit25Data: UnitData = {
         structure: "was/were + done",
         usages: [
           { label: "过去发生的被动动作", example: "The letter <strong>was written</strong> by Shakespeare." },
-          { label: "过去的状态", example: "The building <strong>were destroyed</strong> in the earthquake." },
+          { label: "过去的状态", example: "The building <strong>was destroyed</strong> in the earthquake." },
           { label: "历史事件", example: "America <strong>was discovered</strong> in 1492." },
         ],
         timeWords: "yesterday, last week, in 1990, ago, when I was young",

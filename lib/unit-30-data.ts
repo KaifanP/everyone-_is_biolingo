@@ -299,7 +299,7 @@ export const unit30Data: UnitData = {
       items: [
         {
           question: "I want go to the park.",
-          answer: "I want to go to to the park.（want 后接 to do）",
+          answer: "I want to go to the park.（want 后接 to do）",
         },
         {
           question: "She made me to clean the house.",
