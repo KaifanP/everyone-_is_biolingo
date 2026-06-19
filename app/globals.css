@@ -33,3 +33,13 @@ html {
   background: rgba(59, 130, 246, 0.2);
   color: inherit;
 }
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

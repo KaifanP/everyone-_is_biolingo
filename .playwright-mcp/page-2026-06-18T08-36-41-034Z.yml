@@ -1,0 +1,12 @@
+- main [ref=e2]:
+  - heading "BioLingo Textbook" [level=1] [ref=e3]
+  - paragraph [ref=e4]: Your interactive guide to English.
+  - generic [ref=e5]:
+    - link "Phonics (自然拼读) Learn to read English sounds." [ref=e6] [cursor=pointer]:
+      - /url: /phonics
+      - heading "Phonics (自然拼读)" [level=2] [ref=e7]
+      - paragraph [ref=e8]: Learn to read English sounds.
+    - link "Grammar (中级语法) Master intermediate English grammar." [ref=e9] [cursor=pointer]:
+      - /url: /grammar
+      - heading "Grammar (中级语法)" [level=2] [ref=e10]
+      - paragraph [ref=e11]: Master intermediate English grammar.

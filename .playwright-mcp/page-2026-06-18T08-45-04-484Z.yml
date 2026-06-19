@@ -1,0 +1,169 @@
+- generic [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - link "← 返回课程概览" [ref=e5] [cursor=pointer]:
+        - /url: /everyone-_is_biolingo/grammar
+      - generic [ref=e6]:
+        - paragraph [ref=e7]: 模块1：时态与体态
+        - heading "第1单元：时态体系总览" [level=1] [ref=e8]
+        - paragraph [ref=e9]: Tense System Overview
+      - generic [ref=e10]:
+        - heading "🎯 学习目标" [level=2] [ref=e11]
+        - list [ref=e12]:
+          - listitem [ref=e13]:
+            - generic [ref=e14]: "1"
+            - text: 理解英语时态的本质（时间 + 体态）
+          - listitem [ref=e15]:
+            - generic [ref=e16]: "2"
+            - text: 掌握12种时态的结构和基本用法
+          - listitem [ref=e17]:
+            - generic [ref=e18]: "3"
+            - text: 建立“时态思维”，克服中文无时态的思维惯性
+          - listitem [ref=e19]:
+            - generic [ref=e20]: "4"
+            - text: 识别并使用常见的时间标志词
+      - generic [ref=e22]:
+        - button "✓ 导入" [ref=e113]:
+          - generic [ref=e114]: ✓
+          - generic [ref=e26]: 导入
+        - button "✓ 讲解" [ref=e269]:
+          - generic [ref=e270]: ✓
+          - generic [ref=e32]: 讲解
+        - button "🔍 辨析" [ref=e36]:
+          - generic [ref=e37]: 🔍
+          - generic [ref=e38]: 辨析
+        - button "✏️ 练习" [ref=e42]:
+          - generic [ref=e43]: ✏️
+          - generic [ref=e44]: 练习
+        - button "🎯 产出" [ref=e48]:
+          - generic [ref=e49]: 🎯
+          - generic [ref=e50]: 产出
+        - button "📋 总结" [ref=e54]:
+          - generic [ref=e55]: 📋
+          - generic [ref=e56]: 总结
+      - generic [ref=e273]:
+        - generic [ref=e274]:
+          - heading "⚠️ 中文母语者常见问题" [level=3] [ref=e275]:
+            - generic [ref=e276]: ⚠️
+            - text: 中文母语者常见问题
+          - generic [ref=e277]:
+            - generic [ref=e278]:
+              - heading "1 忘记使用时态" [level=4] [ref=e279]:
+                - generic [ref=e280]: "1"
+                - text: 忘记使用时态
+              - generic [ref=e281]:
+                - generic [ref=e282]:
+                  - paragraph [ref=e283]:
+                    - generic [ref=e284]: ✗
+                    - text: 错误
+                  - paragraph [ref=e285]:
+                    - text: I
+                    - strong [ref=e286]: go
+                    - text: to Beijing last year.
+                - generic [ref=e287]:
+                  - paragraph [ref=e288]:
+                    - generic [ref=e289]: ✓
+                    - text: 正确
+                  - paragraph [ref=e290]:
+                    - text: I
+                    - strong [ref=e291]: went
+                    - text: to Beijing last year.
+              - paragraph [ref=e292]: 💡 中文动词不变形，所以容易忘记英文动词要变。
+            - generic [ref=e293]:
+              - heading "2 过度使用进行时" [level=4] [ref=e294]:
+                - generic [ref=e295]: "2"
+                - text: 过度使用进行时
+              - generic [ref=e296]:
+                - generic [ref=e297]:
+                  - paragraph [ref=e298]:
+                    - generic [ref=e299]: ✗
+                    - text: 错误
+                  - paragraph [ref=e300]:
+                    - text: I
+                    - strong [ref=e301]: am knowing
+                    - text: the answer.
+                - generic [ref=e302]:
+                  - paragraph [ref=e303]:
+                    - generic [ref=e304]: ✓
+                    - text: 正确
+                  - paragraph [ref=e305]:
+                    - text: I
+                    - strong [ref=e306]: know
+                    - text: the answer.
+              - paragraph [ref=e307]: 💡 有些动词（状态动词）不能用进行时，如：know, believe, want, like, belong, own等。
+            - generic [ref=e308]:
+              - heading "3 混淆完成时和过去时" [level=4] [ref=e309]:
+                - generic [ref=e310]: "3"
+                - text: 混淆完成时和过去时
+              - generic [ref=e311]:
+                - generic [ref=e312]:
+                  - paragraph [ref=e313]:
+                    - generic [ref=e314]: ✗
+                    - text: 错误
+                  - paragraph [ref=e315]:
+                    - text: I
+                    - strong [ref=e316]: have gone
+                    - text: to Beijing last year.
+                - generic [ref=e317]:
+                  - paragraph [ref=e318]:
+                    - generic [ref=e319]: ✓
+                    - text: 正确
+                  - paragraph [ref=e320]:
+                    - text: I
+                    - strong [ref=e321]: went
+                    - text: to Beijing last year.
+              - paragraph [ref=e322]: 💡 完成时强调与现在的关联，过去时只描述过去的事实。
+        - generic [ref=e323]:
+          - heading "🎯 选择的关键问题" [level=3] [ref=e324]:
+            - generic [ref=e325]: 🎯
+            - text: 选择的关键问题
+          - generic [ref=e326]:
+            - paragraph [ref=e327]: 做选择时，问自己以下问题：
+            - generic [ref=e328]:
+              - generic [ref=e329]:
+                - generic [ref=e330]: "1"
+                - generic [ref=e331]: 动作发生在什么时候？（过去/现在/将来）
+              - generic [ref=e332]:
+                - generic [ref=e333]: "2"
+                - generic [ref=e334]: 动作处于什么状态？（一般/进行/完成/完成进行）
+              - generic [ref=e335]:
+                - generic [ref=e336]: "3"
+                - generic [ref=e337]: 有没有时间标志词？
+        - generic [ref=e338]:
+          - heading "🚫 状态动词 vs 动作动词" [level=3] [ref=e339]:
+            - generic [ref=e340]: 🚫
+            - text: 状态动词 vs 动作动词
+          - generic [ref=e341]:
+            - paragraph [ref=e342]: 状态动词不能用进行时：
+            - generic [ref=e343]:
+              - generic [ref=e344]:
+                - paragraph [ref=e345]: 感官
+                - paragraph [ref=e346]: see, hear, smell, taste, feel
+              - generic [ref=e347]:
+                - paragraph [ref=e348]: 情感
+                - paragraph [ref=e349]: love, hate, like, want, wish
+              - generic [ref=e350]:
+                - paragraph [ref=e351]: 认知
+                - paragraph [ref=e352]: know, believe, understand, remember, forget
+              - generic [ref=e353]:
+                - paragraph [ref=e354]: 所有
+                - paragraph [ref=e355]: have, own, belong, possess
+            - generic [ref=e356]:
+              - generic [ref=e357]:
+                - generic [ref=e358]: ✗
+                - paragraph [ref=e359]:
+                  - text: I
+                  - strong [ref=e360]: am seeing
+                  - text: a bird in the tree.
+              - generic [ref=e361]:
+                - generic [ref=e362]: ✓
+                - paragraph [ref=e363]:
+                  - text: I
+                  - strong [ref=e364]: see
+                  - text: a bird in the tree.
+              - paragraph [ref=e365]: 💡 I <strong>am looking at</strong> a bird in the tree.（用动作动词替代）
+      - generic [ref=e108]:
+        - button "← 讲解" [ref=e366]
+        - generic [ref=e110]: 3 / 6
+        - button "练习 →" [active] [ref=e367]
+  - alert [ref=e112]

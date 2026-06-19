@@ -1,0 +1,216 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - link "← 返回课程概览" [ref=e5] [cursor=pointer]:
+        - /url: /everyone-_is_biolingo/grammar
+      - generic [ref=e6]:
+        - paragraph [ref=e7]: 模块1：时态与体态
+        - heading "第1单元：时态体系总览" [level=1] [ref=e8]
+        - paragraph [ref=e9]: Tense System Overview
+      - generic [ref=e10]:
+        - heading "🎯 学习目标" [level=2] [ref=e11]
+        - list [ref=e12]:
+          - listitem [ref=e13]:
+            - generic [ref=e14]: "1"
+            - text: 理解英语时态的本质（时间 + 体态）
+          - listitem [ref=e15]:
+            - generic [ref=e16]: "2"
+            - text: 掌握12种时态的结构和基本用法
+          - listitem [ref=e17]:
+            - generic [ref=e18]: "3"
+            - text: 建立“时态思维”，克服中文无时态的思维惯性
+          - listitem [ref=e19]:
+            - generic [ref=e20]: "4"
+            - text: 识别并使用常见的时间标志词
+      - generic [ref=e22]:
+        - button "✓ 导入" [ref=e113]:
+          - generic [ref=e114]: ✓
+          - generic [ref=e26]: 导入
+        - button "✓ 讲解" [ref=e269]:
+          - generic [ref=e270]: ✓
+          - generic [ref=e32]: 讲解
+        - button "✓ 辨析" [ref=e368]:
+          - generic [ref=e369]: ✓
+          - generic [ref=e38]: 辨析
+        - button "✓ 练习" [ref=e417]:
+          - generic [ref=e418]: ✓
+          - generic [ref=e44]: 练习
+        - button "✓ 产出" [ref=e463]:
+          - generic [ref=e464]: ✓
+          - generic [ref=e50]: 产出
+        - button "📋 总结" [ref=e54]:
+          - generic [ref=e55]: 📋
+          - generic [ref=e56]: 总结
+      - generic [ref=e467]:
+        - generic [ref=e468]:
+          - heading "📋 核心要点" [level=3] [ref=e469]:
+            - generic [ref=e470]: 📋
+            - text: 核心要点
+          - generic [ref=e471]:
+            - generic [ref=e472]:
+              - heading "1 时态 = 时间 + 体态" [level=4] [ref=e473]:
+                - generic [ref=e474]: "1"
+                - text: 时态 = 时间 + 体态
+              - list [ref=e475]:
+                - listitem [ref=e476]: • 时间：过去、现在、将来
+                - listitem [ref=e477]: • 体态：一般、进行、完成、完成进行
+            - generic [ref=e478]:
+              - heading "2 12种时态" [level=4] [ref=e479]:
+                - generic [ref=e480]: "2"
+                - text: 12种时态
+              - list [ref=e481]:
+                - listitem [ref=e482]: • 3个时间 × 4个体态
+            - generic [ref=e483]:
+              - heading "3 中文无时态" [level=4] [ref=e484]:
+                - generic [ref=e485]: "3"
+                - text: 中文无时态
+              - list [ref=e486]:
+                - listitem [ref=e487]: • 英文动词要变形
+            - generic [ref=e488]:
+              - heading "4 状态动词" [level=4] [ref=e489]:
+                - generic [ref=e490]: "4"
+                - text: 状态动词
+              - list [ref=e491]:
+                - listitem [ref=e492]: • 不能用进行时
+            - generic [ref=e493]:
+              - heading "5 选择时态三问" [level=4] [ref=e494]:
+                - generic [ref=e495]: "5"
+                - text: 选择时态三问
+              - list [ref=e496]:
+                - listitem [ref=e497]: • 动作发生在什么时候？
+                - listitem [ref=e498]: • 动作处于什么状态？
+                - listitem [ref=e499]: • 有没有时间标志词？
+        - generic [ref=e500]:
+          - heading "🗺️ 思维导图" [level=3] [ref=e501]:
+            - generic [ref=e502]: 🗺️
+            - text: 思维导图
+          - list [ref=e505]:
+            - listitem [ref=e506]:
+              - generic [ref=e507]: 🔹 时态体系
+            - listitem [ref=e508]:
+              - generic [ref=e509]: 🔹 现在时态
+            - listitem [ref=e510]:
+              - generic [ref=e511]: 🔹 一般现在时：do/does（习惯、事实）
+            - listitem [ref=e512]:
+              - generic [ref=e513]: 🔹 现在进行时：am/is/are doing（正在做）
+            - listitem [ref=e514]:
+              - generic [ref=e515]: 🔹 现在完成时：have/has done（与现在有关）
+            - listitem [ref=e516]:
+              - generic [ref=e517]: 🔹 现在完成进行时：have/has been doing（持续到现在）
+            - listitem [ref=e518]:
+              - generic [ref=e519]: 🔹 过去时态
+            - listitem [ref=e520]:
+              - generic [ref=e521]: 🔹 一般过去时：did（过去的事实）
+            - listitem [ref=e522]:
+              - generic [ref=e523]: 🔹 过去进行时：was/were doing（过去正在做）
+            - listitem [ref=e524]:
+              - generic [ref=e525]: 🔹 过去完成时：had done（过去的过去）
+            - listitem [ref=e526]:
+              - generic [ref=e527]: 🔹 过去完成进行时：had been doing（过去持续）
+            - listitem [ref=e528]:
+              - generic [ref=e529]: 🔹 将来时态
+            - list [ref=e530]:
+              - listitem [ref=e531]:
+                - generic [ref=e532]: • 一般将来时：will do / be going to do
+              - listitem [ref=e533]:
+                - generic [ref=e534]: • 将来进行时：will be doing（将来正在做）
+              - listitem [ref=e535]:
+                - generic [ref=e536]: • 将来完成时：will have done（将来完成）
+              - listitem [ref=e537]:
+                - generic [ref=e538]: • 将来完成进行时：will have been doing（将来持续）
+        - generic [ref=e539]:
+          - heading "✅ 自测题" [level=3] [ref=e540]:
+            - generic [ref=e541]: ✅
+            - text: 自测题
+          - generic [ref=e542]:
+            - generic [ref=e543]:
+              - paragraph [ref=e544]:
+                - generic [ref=e545]: "1"
+                - text: She ______ (work) here since 2015.
+              - generic [ref=e546]:
+                - button "A. works" [ref=e547] [cursor=pointer]:
+                  - generic [ref=e548]: A.
+                  - text: works
+                - button "B. has worked" [ref=e549] [cursor=pointer]:
+                  - generic [ref=e550]: B.
+                  - text: has worked
+                - button "C. is working" [ref=e551] [cursor=pointer]:
+                  - generic [ref=e552]: C.
+                  - text: is working
+                - button "D. worked" [ref=e553] [cursor=pointer]:
+                  - generic [ref=e554]: D.
+                  - text: worked
+            - generic [ref=e555]:
+              - paragraph [ref=e556]:
+                - generic [ref=e557]: "2"
+                - text: I ______ (read) when the phone rang.
+              - generic [ref=e558]:
+                - button "A. read" [ref=e559] [cursor=pointer]:
+                  - generic [ref=e560]: A.
+                  - text: read
+                - button "B. was reading" [ref=e561] [cursor=pointer]:
+                  - generic [ref=e562]: B.
+                  - text: was reading
+                - button "C. have read" [ref=e563] [cursor=pointer]:
+                  - generic [ref=e564]: C.
+                  - text: have read
+                - button "D. had read" [ref=e565] [cursor=pointer]:
+                  - generic [ref=e566]: D.
+                  - text: had read
+            - generic [ref=e567]:
+              - paragraph [ref=e568]:
+                - generic [ref=e569]: "3"
+                - text: By next month, we ______ (know) each other for 10 years.
+              - generic [ref=e570]:
+                - button "A. know" [ref=e571] [cursor=pointer]:
+                  - generic [ref=e572]: A.
+                  - text: know
+                - button "B. will know" [ref=e573] [cursor=pointer]:
+                  - generic [ref=e574]: B.
+                  - text: will know
+                - button "C. will have known" [ref=e575] [cursor=pointer]:
+                  - generic [ref=e576]: C.
+                  - text: will have known
+                - button "D. have known" [ref=e577] [cursor=pointer]:
+                  - generic [ref=e578]: D.
+                  - text: have known
+            - generic [ref=e579]:
+              - paragraph [ref=e580]:
+                - generic [ref=e581]: "4"
+                - text: The sun ______ (rise) in the east.
+              - generic [ref=e582]:
+                - button "A. rises" [ref=e583] [cursor=pointer]:
+                  - generic [ref=e584]: A.
+                  - text: rises
+                - button "B. is rising" [ref=e585] [cursor=pointer]:
+                  - generic [ref=e586]: B.
+                  - text: is rising
+                - button "C. has risen" [ref=e587] [cursor=pointer]:
+                  - generic [ref=e588]: C.
+                  - text: has risen
+                - button "D. rose" [ref=e589] [cursor=pointer]:
+                  - generic [ref=e590]: D.
+                  - text: rose
+            - generic [ref=e591]:
+              - paragraph [ref=e592]:
+                - generic [ref=e593]: "5"
+                - text: She ______ (always/complain) about the food.
+              - generic [ref=e594]:
+                - button "A. always complains" [ref=e595] [cursor=pointer]:
+                  - generic [ref=e596]: A.
+                  - text: always complains
+                - button "B. is always complaining" [ref=e597] [cursor=pointer]:
+                  - generic [ref=e598]: B.
+                  - text: is always complaining
+                - button "C. has always complained" [ref=e599] [cursor=pointer]:
+                  - generic [ref=e600]: C.
+                  - text: has always complained
+                - button "D. always complained" [ref=e601] [cursor=pointer]:
+                  - generic [ref=e602]: D.
+                  - text: always complained
+          - button "提交答案" [disabled] [ref=e604]
+      - generic [ref=e108]:
+        - button "← 产出" [ref=e605]
+        - generic [ref=e110]: 6 / 6
+        - button "总结 →" [disabled] [ref=e462]
+  - alert [ref=e112]

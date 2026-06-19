@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { modules } from "@/lib/grammar-data";
+import { useGrammarProgress } from "@/lib/progress";
 
 const MODULE_GRADIENTS = [
   "from-blue-500 to-indigo-600",
@@ -15,6 +16,8 @@ const MODULE_GRADIENTS = [
 ];
 
 export default function GrammarOverview() {
+  const { completedUnits } = useGrammarProgress();
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
       <div className="max-w-5xl mx-auto px-4 py-8">
@@ -38,9 +41,24 @@ export default function GrammarOverview() {
           <p className="text-gray-500 dark:text-gray-400">
             Intermediate English Grammar Course
           </p>
-          <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
-            7个模块 · 42个单元 · 面向中文母语者
-          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 mt-3">
+            <p className="text-sm text-gray-400 dark:text-gray-500">
+              7个模块 · 42个单元 · 面向中文母语者
+            </p>
+            {completedUnits.length > 0 && (
+              <div className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/20 px-3 py-1 rounded-full border border-emerald-100 dark:border-emerald-800/30">
+                <span className="text-emerald-500 text-xs font-bold">
+                  已完成 {completedUnits.length} / 42
+                </span>
+                <div className="w-16 h-1.5 bg-emerald-200 dark:bg-emerald-800/50 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-emerald-500 rounded-full transition-all duration-1000 ease-out"
+                    style={{ width: `${(completedUnits.length / 42) * 100}%` }}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </motion.div>
 
         <div className="space-y-8">
@@ -78,12 +96,21 @@ export default function GrammarOverview() {
                     >
                       <Link
                         href={`/grammar/${unit.id}`}
-                        className="block p-4 rounded-xl bg-gray-50 dark:bg-gray-700/30 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all group border border-transparent hover:border-blue-200 dark:hover:border-blue-800"
+                        className={`block p-4 rounded-xl transition-all group border ${
+                          completedUnits.includes(unit.id)
+                            ? "bg-emerald-50 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/20"
+                            : "bg-gray-50 dark:bg-gray-700/30 hover:bg-blue-50 dark:hover:bg-blue-900/20 border-transparent hover:border-blue-200 dark:hover:border-blue-800"
+                        }`}
                       >
                         <div className="flex items-start justify-between">
                           <div>
-                            <p className="text-xs font-medium text-gray-400 dark:text-gray-500 mb-1">
+                            <p className="text-xs font-medium text-gray-400 dark:text-gray-500 mb-1 flex items-center gap-1">
                               第{unit.number}单元
+                              {completedUnits.includes(unit.id) && (
+                                <span className="text-emerald-500 text-[10px]">
+                                  ✅ 已完成
+                                </span>
+                              )}
                             </p>
                             <p className="text-sm font-bold text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                               {unit.title}

@@ -1,0 +1,104 @@
+- generic [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - link "← 返回课程概览" [ref=e5] [cursor=pointer]:
+        - /url: /everyone-_is_biolingo/grammar
+      - generic [ref=e6]:
+        - paragraph [ref=e7]: 模块1：时态与体态
+        - heading "第1单元：时态体系总览" [level=1] [ref=e8]
+        - paragraph [ref=e9]: Tense System Overview
+      - generic [ref=e10]:
+        - heading "🎯 学习目标" [level=2] [ref=e11]
+        - list [ref=e12]:
+          - listitem [ref=e13]:
+            - generic [ref=e14]: "1"
+            - text: 理解英语时态的本质（时间 + 体态）
+          - listitem [ref=e15]:
+            - generic [ref=e16]: "2"
+            - text: 掌握12种时态的结构和基本用法
+          - listitem [ref=e17]:
+            - generic [ref=e18]: "3"
+            - text: 建立“时态思维”，克服中文无时态的思维惯性
+          - listitem [ref=e19]:
+            - generic [ref=e20]: "4"
+            - text: 识别并使用常见的时间标志词
+      - generic [ref=e22]:
+        - button "✓ 导入" [ref=e113]:
+          - generic [ref=e114]: ✓
+          - generic [ref=e26]: 导入
+        - button "✓ 讲解" [ref=e269]:
+          - generic [ref=e270]: ✓
+          - generic [ref=e32]: 讲解
+        - button "✓ 辨析" [ref=e368]:
+          - generic [ref=e369]: ✓
+          - generic [ref=e38]: 辨析
+        - button "✓ 练习" [ref=e417]:
+          - generic [ref=e418]: ✓
+          - generic [ref=e44]: 练习
+        - button "🎯 产出" [ref=e48]:
+          - generic [ref=e49]: 🎯
+          - generic [ref=e50]: 产出
+        - button "📋 总结" [ref=e54]:
+          - generic [ref=e55]: 📋
+          - generic [ref=e56]: 总结
+      - generic [ref=e421]:
+        - heading "🎯 产出任务" [level=3] [ref=e423]:
+          - generic [ref=e424]: 🎯
+          - text: 产出任务
+        - generic [ref=e425]:
+          - generic [ref=e426]:
+            - generic [ref=e427]: "1"
+            - generic [ref=e428]:
+              - heading "描述你的一天" [level=4] [ref=e429]
+              - paragraph [ref=e430]: Describe Your Day
+          - paragraph [ref=e431]: 用一般现在时和现在进行时描述你的一天。至少包含5个句子。
+          - generic [ref=e432]:
+            - paragraph [ref=e433]: 💡 示例
+            - generic [ref=e434]:
+              - paragraph [ref=e435]:
+                - text: I usually
+                - strong [ref=e436]: wake up
+                - text: at 7 am.（习惯）
+              - paragraph [ref=e437]:
+                - text: Right now, I
+                - strong [ref=e438]: am studying
+                - text: English.（正在做）
+              - paragraph [ref=e439]:
+                - text: I
+                - strong [ref=e440]: have
+                - text: breakfast at 8 am every day.（习惯）
+              - paragraph [ref=e441]:
+                - text: Today, I
+                - strong [ref=e442]: am having
+                - text: lunch with a friend.（临时安排）
+        - generic [ref=e443]:
+          - generic [ref=e444]:
+            - generic [ref=e445]: "2"
+            - generic [ref=e446]:
+              - heading "时间线练习" [level=4] [ref=e447]
+              - paragraph [ref=e448]: Timeline Practice
+          - paragraph [ref=e449]: 请根据以下时间线，写出正确的句子。
+          - generic [ref=e450]:
+            - paragraph [ref=e451]: 💡 示例
+            - generic [ref=e452]:
+              - paragraph [ref=e453]:
+                - text: "2010: 开始学英语 → I"
+                - strong [ref=e454]: started
+                - text: learning English in 2010.
+              - paragraph [ref=e455]:
+                - text: "2015: 通过六级考试 → I"
+                - strong [ref=e456]: passed
+                - text: CET-6 in 2015.
+              - paragraph [ref=e457]:
+                - text: "现在: 仍然在学习 → I"
+                - strong [ref=e458]: have been learning
+                - text: English for 13 years.
+              - paragraph [ref=e459]:
+                - text: 到2020年 → By 2020, I
+                - strong [ref=e460]: had passed
+                - text: CET-6.
+      - generic [ref=e108]:
+        - button "← 练习" [ref=e461]
+        - generic [ref=e110]: 5 / 6
+        - button "总结 →" [active] [ref=e462]
+  - alert [ref=e112]

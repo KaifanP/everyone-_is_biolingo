@@ -10,13 +10,14 @@ interface Props {
 
 export default function StepNav({ currentStep, onStepChange }: Props) {
   return (
-    <div className="flex items-center justify-center">
-      {STEP_LABELS.map((step, i) => {
-        const isActive = currentStep === i;
-        const isPast = currentStep > i;
-        const isLast = i === STEP_LABELS.length - 1;
-        return (
-          <div key={step.key} className="flex items-center">
+    <div className="w-full overflow-x-auto no-scrollbar pb-2 pt-1 px-4 sm:px-0">
+      <div className="flex items-center sm:justify-center min-w-max mx-auto">
+        {STEP_LABELS.map((step, i) => {
+          const isActive = currentStep === i;
+          const isPast = currentStep > i;
+          const isLast = i === STEP_LABELS.length - 1;
+          return (
+            <div key={step.key} className="flex items-center">
             <button
               onClick={() => onStepChange(i)}
               className="relative flex flex-col items-center group"
@@ -72,6 +73,7 @@ export default function StepNav({ currentStep, onStepChange }: Props) {
           </div>
         );
       })}
+      </div>
     </div>
   );
 }

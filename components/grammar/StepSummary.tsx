@@ -2,7 +2,9 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { UnitData } from "@/lib/unit-01-data";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import confetti from "canvas-confetti";
+import { useGrammarProgress } from "@/lib/progress";
 
 interface Props {
   data: UnitData;
@@ -68,6 +70,7 @@ function MindMapTree({ text }: { text: string }) {
 
 export default function StepSummary({ data }: Props) {
   const { summary } = data;
+  const { markUnitCompleted } = useGrammarProgress();
   const [quizAnswers, setQuizAnswers] = useState<(string | null)[]>(
     new Array(summary.selfTest.length).fill(null)
   );
@@ -82,6 +85,20 @@ export default function StepSummary({ data }: Props) {
   const correctCount = quizAnswers.filter(
     (a, i) => a === summary.selfTest[i].answer
   ).length;
+
+  useEffect(() => {
+    if (showResults && correctCount === summary.selfTest.length) {
+      // 🎉 All correct! Confetti!
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ["#10b981", "#3b82f6", "#f59e0b", "#8b5cf6"],
+      });
+      // Mark as completed
+      markUnitCompleted(data.info.id);
+    }
+  }, [showResults, correctCount, summary.selfTest.length, markUnitCompleted, data.info.id]);
 
   return (
     <div className="space-y-8">
