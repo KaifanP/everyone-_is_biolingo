@@ -17,6 +17,8 @@ const MODULE_GRADIENTS = [
 
 export default function GrammarOverview() {
   const { completedUnits } = useGrammarProgress();
+  const allUnits = modules.flatMap((module) => module.units);
+  const recommendedUnit = allUnits.find((unit) => !completedUnits.includes(unit.id)) ?? allUnits[0];
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
@@ -61,6 +63,63 @@ export default function GrammarOverview() {
           </div>
         </motion.div>
 
+        <motion.section
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.08 }}
+          className="mb-10 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]"
+        >
+          <div className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 dark:border-blue-800/40 dark:from-blue-950/30 dark:to-indigo-950/20">
+            <p className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-300">
+              建议学习方式
+            </p>
+            <h2 className="mt-2 text-xl font-bold text-gray-900 dark:text-white">
+              每次只学一个单元，用 20–30 分钟走完闭环
+            </h2>
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              <div className="rounded-xl bg-white/80 p-3 dark:bg-gray-900/60">
+                <p className="text-sm font-bold text-blue-700 dark:text-blue-300">学习前</p>
+                <p className="mt-1 text-xs leading-5 text-gray-600 dark:text-gray-300">先回答导入问题，不会也先猜；预测会让后面的讲解更容易被记住。</p>
+              </div>
+              <div className="rounded-xl bg-white/80 p-3 dark:bg-gray-900/60">
+                <p className="text-sm font-bold text-violet-700 dark:text-violet-300">学习中</p>
+                <p className="mt-1 text-xs leading-5 text-gray-600 dark:text-gray-300">重点比较容易混淆的选项；练习时先闭卷作答，再核对答案。</p>
+              </div>
+              <div className="rounded-xl bg-white/80 p-3 dark:bg-gray-900/60">
+                <p className="text-sm font-bold text-emerald-700 dark:text-emerald-300">学习后</p>
+                <p className="mt-1 text-xs leading-5 text-gray-600 dark:text-gray-300">自测达到 80%，并能自己造句解释，才算本轮掌握；隔天再测一次。</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800/80">
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+              {completedUnits.length > 0 ? "继续学习" : "推荐起点"}
+            </p>
+            <h2 className="mt-2 text-lg font-bold text-gray-900 dark:text-white">
+              第{recommendedUnit.number}单元 · {recommendedUnit.title}
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-gray-500 dark:text-gray-400">
+              {completedUnits.length > 0
+                ? "从上次进度继续。若某个模块正是你的薄弱点，也可以直接跳到对应模块。"
+                : "第一次学习建议从体系总览开始；先建立地图，再进入具体规则。"}
+            </p>
+            <Link
+              href={`/grammar/${recommendedUnit.id}`}
+              className="mt-5 inline-flex rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-blue-700"
+            >
+              {completedUnits.length > 0 ? "继续这一单元 →" : "开始第一单元 →"}
+            </Link>
+          </div>
+        </motion.section>
+
+        <div className="mb-6 flex flex-col gap-1">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">课程地图</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            系统学习请按顺序；针对薄弱点复习时，可根据每个模块的“学会证据”选择。
+          </p>
+        </div>
+
         <div className="space-y-8">
           {modules.map((mod, mi) => (
             <motion.div
@@ -68,6 +127,7 @@ export default function GrammarOverview() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: mi * 0.08 }}
+              id={`module-${mod.id}`}
               className="bg-white dark:bg-gray-800/80 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700/50 overflow-hidden backdrop-blur-sm"
             >
               <div className={`bg-gradient-to-r ${MODULE_GRADIENTS[mi]} p-5`}>
@@ -86,6 +146,16 @@ export default function GrammarOverview() {
                 </div>
               </div>
               <div className="p-4">
+                <div className="mb-4 grid gap-2 rounded-xl bg-gray-50 p-4 text-sm dark:bg-gray-900/40 sm:grid-cols-2">
+                  <div>
+                    <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400">学会证据</p>
+                    <p className="mt-1 leading-5 text-gray-700 dark:text-gray-300">{mod.learningOutcome}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-amber-600 dark:text-amber-400">开始前建议</p>
+                    <p className="mt-1 leading-5 text-gray-700 dark:text-gray-300">{mod.prerequisite}</p>
+                  </div>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {mod.units.map((unit, ui) => (
                     <motion.div

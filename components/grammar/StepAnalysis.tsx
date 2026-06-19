@@ -7,8 +7,40 @@ interface Props {
   data: UnitData;
 }
 
+const ANALYSIS_SECTION_LABELS: Record<string, { title: string; description: string }> = {
+  "01": {
+    title: "动词意义与体态速查",
+    description: "先判断动词在当前语境中表达状态还是动作；部分动词会随意义改变用法，不能只背“永远不用进行时”。",
+  },
+  "02": {
+    title: "情态结构与功能速查",
+    description: "把形式、语气强度和使用场合放在一起比较，避免只按中文逐词替换。",
+  },
+  "03": {
+    title: "从句结构速查",
+    description: "先判断从句在整句中的功能，再检查引导词、语序和句子成分。",
+  },
+  "04": {
+    title: "转换规则速查",
+    description: "转换时同时追踪表达焦点、时态、人称与时间视角，不做机械替换。",
+  },
+  "05": {
+    title: "非谓语结构速查",
+    description: "先找句子谓语，再判断非谓语的形式、功能以及它与逻辑主语的关系。",
+  },
+  "06": {
+    title: "特殊句式结构速查",
+    description: "先还原常规语序和核心意思，再判断结构变化带来的强调或语气效果。",
+  },
+  "07": {
+    title: "搭配与用法速查",
+    description: "把介词、连词、冠词等放进完整搭配和语境中记忆，不用孤立中文释义硬套。",
+  },
+};
+
 export default function StepAnalysis({ data }: Props) {
   const { analysis } = data;
+  const sectionLabel = ANALYSIS_SECTION_LABELS[data.info.moduleId] ?? ANALYSIS_SECTION_LABELS["01"];
 
   return (
     <div className="space-y-8">
@@ -109,11 +141,11 @@ export default function StepAnalysis({ data }: Props) {
           <span className="w-8 h-8 flex items-center justify-center bg-purple-100 dark:bg-purple-900/40 rounded-lg text-sm">
             🚫
           </span>
-          状态动词 vs 动作动词
+          {sectionLabel.title}
         </h3>
         <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-5 border border-purple-100 dark:border-purple-800/30">
           <p className="text-gray-700 dark:text-gray-300 mb-4 text-sm font-medium">
-            状态动词不能用进行时：
+            {sectionLabel.description}
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
             {analysis.stateVerbs.categories.map((cat, i) => (

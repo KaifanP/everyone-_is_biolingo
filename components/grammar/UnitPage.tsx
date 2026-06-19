@@ -27,6 +27,15 @@ const stepComponents = [
   StepSummary,
 ];
 
+const stepPurposes = [
+  "先预测与观察，激活你已经知道的内容。",
+  "建立可解释的规则模型，不只记公式。",
+  "对比易混形式，理解错误为什么发生。",
+  "闭卷作答后再核对，用检索强化记忆。",
+  "在新语境中自主表达，检验能否迁移。",
+  "完成自测并安排复习，确认真正掌握。",
+];
+
 export default function UnitPage({ data, moduleTitle }: Props) {
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -58,6 +67,11 @@ export default function UnitPage({ data, moduleTitle }: Props) {
           <p className="text-gray-500 dark:text-gray-400 mt-1">
             {data.info.titleEn}
           </p>
+          <div className="mt-4 flex flex-wrap gap-2 text-xs text-gray-600 dark:text-gray-300">
+            <span className="rounded-full bg-white px-3 py-1.5 shadow-sm ring-1 ring-gray-200 dark:bg-gray-800 dark:ring-gray-700">约 20–30 分钟</span>
+            <span className="rounded-full bg-white px-3 py-1.5 shadow-sm ring-1 ring-gray-200 dark:bg-gray-800 dark:ring-gray-700">先预测，再看讲解</span>
+            <span className="rounded-full bg-white px-3 py-1.5 shadow-sm ring-1 ring-gray-200 dark:bg-gray-800 dark:ring-gray-700">自测 80% 为本轮达标</span>
+          </div>
         </motion.div>
 
         <motion.div
@@ -67,7 +81,7 @@ export default function UnitPage({ data, moduleTitle }: Props) {
           className="mb-6 p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl border border-blue-100 dark:border-blue-800/30"
         >
           <h2 className="text-sm font-bold text-blue-700 dark:text-blue-300 mb-3">
-            🎯 学习目标
+            🎯 本单元要解决的任务
           </h2>
           <ul className="space-y-2">
             {data.objectives.map((obj, i) => (
@@ -79,10 +93,19 @@ export default function UnitPage({ data, moduleTitle }: Props) {
               </li>
             ))}
           </ul>
+          <div className="mt-5 border-t border-blue-200/70 pt-4 dark:border-blue-800/50">
+            <p className="text-xs font-bold text-emerald-700 dark:text-emerald-300">怎样算学会？</p>
+            <p className="mt-1 text-xs leading-5 text-gray-600 dark:text-gray-300">
+              不看讲解完成关键练习；自测至少答对 80%；最后能自己造出 2 个例句，并说出选择该结构的理由。
+            </p>
+          </div>
         </motion.div>
 
         <div className="sticky top-0 z-10 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg py-4 mb-6 border-b border-gray-100 dark:border-gray-800">
           <StepNav currentStep={currentStep} onStepChange={setCurrentStep} />
+          <p className="mt-2 text-center text-xs text-gray-500 dark:text-gray-400">
+            {stepPurposes[currentStep]}
+          </p>
         </div>
 
         <AnimatePresence mode="wait">

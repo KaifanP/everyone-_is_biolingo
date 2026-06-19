@@ -4,6 +4,8 @@ export interface ModuleInfo {
   title: string;
   titleEn: string;
   description: string;
+  learningOutcome: string;
+  prerequisite: string;
   units: UnitInfo[];
 }
 
@@ -22,6 +24,8 @@ export const modules: ModuleInfo[] = [
     title: "时态与体态",
     titleEn: "Tenses & Aspects",
     description: "掌握英语12种时态，建立时态思维",
+    learningOutcome: "能根据时间线、动作状态和语境选择时态，并说明选择依据。",
+    prerequisite: "认识常见动词形式；不要求先背完 12 种时态。",
     units: [
       { id: "unit-01", moduleId: "01", number: 1, title: "时态体系总览", titleEn: "Tense System Overview" },
       { id: "unit-02", moduleId: "01", number: 2, title: "现在完成时 vs 一般过去时", titleEn: "Present Perfect vs Simple Past" },
@@ -39,6 +43,8 @@ export const modules: ModuleInfo[] = [
     title: "情态动词",
     titleEn: "Modal Verbs",
     description: "掌握情态动词的多种含义与用法",
+    learningOutcome: "能准确表达能力、许可、义务、建议和不同程度的推测。",
+    prerequisite: "建议先掌握模块 1 的基本时态概念。",
     units: [
       { id: "unit-09", moduleId: "02", number: 9, title: "情态动词基础：能力与许可", titleEn: "Modals: Ability & Permission" },
       { id: "unit-10", moduleId: "02", number: 10, title: "义务与建议", titleEn: "Obligation & Suggestion" },
@@ -54,6 +60,8 @@ export const modules: ModuleInfo[] = [
     title: "从句系统",
     titleEn: "Clause System",
     description: "掌握名词性从句、定语从句和状语从句",
+    learningOutcome: "能拆解长句结构，并用从句补充信息、限定对象和表达逻辑。",
+    prerequisite: "能识别句子的主语、谓语和基本连接词。",
     units: [
       { id: "unit-15", moduleId: "03", number: 15, title: "从句概述与名词性从句入门", titleEn: "Clause Overview & Noun Clauses" },
       { id: "unit-16", moduleId: "03", number: 16, title: "名词性从句详解", titleEn: "Noun Clauses in Detail" },
@@ -73,6 +81,8 @@ export const modules: ModuleInfo[] = [
     title: "被动语态与间接引语",
     titleEn: "Passive Voice & Reported Speech",
     description: "掌握被动语态和间接引语的转换",
+    learningOutcome: "能根据表达焦点选择主动或被动，并准确转述他人的话。",
+    prerequisite: "建议先完成时态模块；转述时需要调整人称和时间视角。",
     units: [
       { id: "unit-25", moduleId: "04", number: 25, title: "被动语态基础", titleEn: "Passive Voice Basics" },
       { id: "unit-26", moduleId: "04", number: 26, title: "被动语态进阶", titleEn: "Passive Voice Advanced" },
@@ -87,6 +97,8 @@ export const modules: ModuleInfo[] = [
     title: "非谓语动词",
     titleEn: "Non-finite Verbs",
     description: "掌握不定式、动名词和分词的用法",
+    learningOutcome: "能判断非谓语在句中的功能，避免一个简单句出现多个谓语。",
+    prerequisite: "能识别谓语动词，并理解基本句子成分。",
     units: [
       { id: "unit-30", moduleId: "05", number: 30, title: "不定式基础", titleEn: "Infinitive Basics" },
       { id: "unit-31", moduleId: "05", number: 31, title: "动名词基础", titleEn: "Gerund Basics" },
@@ -102,6 +114,8 @@ export const modules: ModuleInfo[] = [
     title: "特殊句式",
     titleEn: "Special Sentence Patterns",
     description: "掌握倒装、强调、虚拟语气等特殊句式",
+    learningOutcome: "能读懂并使用倒装、强调、虚拟和省略结构来调整表达重点。",
+    prerequisite: "适合完成核心模块后进阶，不建议把它作为语法起点。",
     units: [
       { id: "unit-36", moduleId: "06", number: 36, title: "倒装句", titleEn: "Inversion" },
       { id: "unit-37", moduleId: "06", number: 37, title: "强调句", titleEn: "Cleft Sentences" },
@@ -115,6 +129,8 @@ export const modules: ModuleInfo[] = [
     title: "词性与搭配",
     titleEn: "Parts of Speech & Collocations",
     description: "掌握介词、连词、冠词等词性及常见搭配",
+    learningOutcome: "能用介词、连词、冠词和限定词把句子连接得更准确、自然。",
+    prerequisite: "可独立按需学习，也适合贯穿其他模块持续复习。",
     units: [
       { id: "unit-40", moduleId: "07", number: 40, title: "介词与介词短语", titleEn: "Prepositions & Prepositional Phrases" },
       { id: "unit-41", moduleId: "07", number: 41, title: "连词与逻辑关系", titleEn: "Conjunctions & Logic" },

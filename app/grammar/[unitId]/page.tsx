@@ -17,11 +17,11 @@ export default function UnitRoute({
 }) {
   const { unitId } = use(params);
   const data = getUnitData(unitId);
-  const module = getModuleByUnitId(unitId);
+  const moduleInfo = getModuleByUnitId(unitId);
 
-  if (!data || !module) {
+  if (!data || !moduleInfo) {
     notFound();
   }
 
-  return <UnitPage data={data} moduleTitle={`模块${module.number}：${module.title}`} />;
+  return <UnitPage data={data} moduleTitle={`模块${moduleInfo.number}：${moduleInfo.title}`} />;
 }

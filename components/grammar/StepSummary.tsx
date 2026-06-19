@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { UnitData } from "@/lib/unit-01-data";
 import { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
@@ -85,20 +85,22 @@ export default function StepSummary({ data }: Props) {
   const correctCount = quizAnswers.filter(
     (a, i) => a === summary.selfTest[i].answer
   ).length;
+  const masteryThreshold = Math.ceil(summary.selfTest.length * 0.8);
+  const hasReachedMastery = correctCount >= masteryThreshold;
 
   useEffect(() => {
-    if (showResults && correctCount === summary.selfTest.length) {
-      // 🎉 All correct! Confetti!
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ["#10b981", "#3b82f6", "#f59e0b", "#8b5cf6"],
-      });
-      // Mark as completed
+    if (showResults && hasReachedMastery) {
       markUnitCompleted(data.info.id);
+      if (correctCount === summary.selfTest.length) {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ["#10b981", "#3b82f6", "#f59e0b", "#8b5cf6"],
+        });
+      }
     }
-  }, [showResults, correctCount, summary.selfTest.length, markUnitCompleted, data.info.id]);
+  }, [showResults, hasReachedMastery, correctCount, summary.selfTest.length, markUnitCompleted, data.info.id]);
 
   return (
     <div className="space-y-8">
@@ -216,6 +218,17 @@ export default function StepSummary({ data }: Props) {
                   );
                 })}
               </div>
+              {showResults && (
+                <p className={`ml-8 mt-3 rounded-lg px-3 py-2 text-xs leading-5 ${
+                  quizAnswers[qi] === q.answer
+                    ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200"
+                    : "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-200"
+                }`}>
+                  {quizAnswers[qi] === q.answer
+                    ? "答对了。请再用一句话说出你的判断依据。"
+                    : `正确答案：${q.answer}。先回到“辨析”定位错误原因，再重新作答。`}
+                </p>
+              )}
             </motion.div>
           ))}
         </div>
@@ -239,9 +252,14 @@ export default function StepSummary({ data }: Props) {
                 得分：{correctCount}/{summary.selfTest.length}
                 {correctCount === summary.selfTest.length
                   ? " 🎉 满分！"
-                  : correctCount >= summary.selfTest.length * 0.6
-                  ? " 👍 不错！"
-                  : " 💪 继续加油！"}
+                  : hasReachedMastery
+                  ? " ✅ 本轮达标"
+                  : " 🔁 还需要一次针对性复习"}
+              </p>
+              <p className="mt-2 max-w-xl text-sm leading-6 text-gray-600 dark:text-gray-300">
+                {hasReachedMastery
+                  ? "现在请完成一个不看示例的自主造句，并在 24 小时后重新测试。隔天仍能答对，才更接近长期掌握。"
+                  : `本轮达标线是 ${masteryThreshold}/${summary.selfTest.length}。不要立刻反复刷同一套题：先查看错题对应的讲解或辨析，解释错误原因后再重测。`}
               </p>
             </motion.div>
           )}

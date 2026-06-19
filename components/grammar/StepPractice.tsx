@@ -40,6 +40,9 @@ export default function StepPractice({ data }: Props) {
           </span>
           练习
         </h3>
+        <div className="mb-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900 dark:border-amber-800/50 dark:bg-amber-950/30 dark:text-amber-100">
+          <strong>先检索，再核对：</strong>请先在纸上或心里完整作答，再打开答案。卡住时至少坚持回想 10 秒；这种“费力感”正是记忆在加深。
+        </div>
         <div className="flex gap-2 mb-6 flex-wrap">
           {practice.map((ex, i) => (
             <button
@@ -98,7 +101,7 @@ export default function StepPractice({ data }: Props) {
                         : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-emerald-100 dark:hover:bg-emerald-900/30"
                     }`}
                   >
-                    {revealedAnswers.has(i) ? "🔽 隐藏答案" : "▶️ 查看答案"}
+                    {revealedAnswers.has(i) ? "🔽 收起答案" : "✓ 我已作答，核对答案"}
                   </button>
                   <AnimatePresence>
                     {revealedAnswers.has(i) && (
@@ -114,6 +117,9 @@ export default function StepPractice({ data }: Props) {
                             className="text-sm text-gray-700 dark:text-gray-300"
                             dangerouslySetInnerHTML={{ __html: item.answer }}
                           />
+                          <p className="mt-2 text-xs leading-5 text-emerald-700 dark:text-emerald-300">
+                            核对后请再问自己：我的答案错在规则、形式，还是没有读懂语境？只改答案，不找原因，下一次还会在同一处出错。
+                          </p>
                         </div>
                       </motion.div>
                     )}
