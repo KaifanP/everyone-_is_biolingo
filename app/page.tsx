@@ -32,13 +32,13 @@ export default function Home() {
           <nav className="flex items-center justify-between">
             <div>
               <p className="text-lg font-black tracking-tight text-blue-700 dark:text-blue-300">BioLingo</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400">为中文母语者设计的英语学习课</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">英语与韩语学习课 · 为中文母语者设计</p>
             </div>
             <Link
               href="/grammar"
               className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
             >
-              查看全部课程
+              英语语法课程
             </Link>
           </nav>
 
@@ -69,6 +69,12 @@ export default function Home() {
               >
                 进入中级语法课程
               </Link>
+              <Link
+                href="/korean"
+                className="w-full rounded-xl bg-indigo-600 px-6 py-3.5 text-center text-sm font-bold text-white shadow-lg shadow-indigo-600/20 transition hover:-translate-y-0.5 hover:bg-indigo-700 sm:w-auto"
+              >
+                开始韩语入门
+              </Link>
             </div>
           </div>
         </div>
@@ -79,11 +85,11 @@ export default function Home() {
           <p className="text-sm font-bold text-blue-600 dark:text-blue-400">先选对起点</p>
           <h2 className="mt-2 text-3xl font-black tracking-tight">你现在最想解决什么问题？</h2>
           <p className="mt-3 leading-7 text-slate-600 dark:text-slate-300">
-            两条路径可以独立学习。发音基础薄弱时先走自然拼读；已经能阅读、但表达常卡在结构选择时，直接进入语法。
+            三条路径可以独立学习。发音基础薄弱时先走自然拼读；已经能阅读、但表达常卡在结构选择时，直接进入语法；想学韩语则从入门开始。
           </p>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-2">
+        <div className="grid gap-5 lg:grid-cols-3">
           <Link
             href="/phonics"
             className="group rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-7 transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-600/10 dark:border-blue-900/50 dark:from-blue-950/30 dark:to-slate-900"
@@ -129,6 +135,29 @@ export default function Home() {
               <span><strong className="block text-base text-slate-900 dark:text-white">6 步</strong> 学习闭环</span>
             </div>
           </Link>
+
+          <Link
+            href="/korean"
+            className="group rounded-3xl border border-indigo-100 bg-gradient-to-br from-indigo-50 to-white p-7 transition hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl hover:shadow-indigo-600/10 dark:border-indigo-900/50 dark:from-indigo-950/30 dark:to-slate-900"
+          >
+            <div className="flex items-start justify-between gap-5">
+              <div>
+                <span className="inline-flex rounded-full bg-indigo-100 px-3 py-1 text-xs font-bold text-indigo-700 dark:bg-indigo-900/60 dark:text-indigo-200">
+                  零基础 · TOPIK I
+                </span>
+                <h3 className="mt-5 text-2xl font-black">韩语入门 Korean</h3>
+                <p className="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                  适合想系统学习韩语的中文母语者。从韩文字母到TOPIK I基础水平，30课覆盖发音、语法和应试入门。
+                </p>
+              </div>
+              <span className="text-3xl transition group-hover:translate-x-1">→</span>
+            </div>
+            <div className="mt-7 grid grid-cols-3 gap-2 border-t border-indigo-100 pt-5 text-center text-xs text-slate-600 dark:border-indigo-900/50 dark:text-slate-300">
+              <span><strong className="block text-base text-slate-900 dark:text-white">6</strong> 个学习模块</span>
+              <span><strong className="block text-base text-slate-900 dark:text-white">30</strong> 课完整内容</span>
+              <span><strong className="block text-base text-slate-900 dark:text-white">6 步</strong> 学习闭环</span>
+            </div>
+          </Link>
         </div>
       </section>
 
@@ -154,7 +183,7 @@ export default function Home() {
       </section>
 
       <footer className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-10 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-8 dark:text-slate-400">
-        <p>BioLingo · 让英语知识变成可以调用的能力</p>
+        <p>BioLingo · 让英语和韩语知识变成可以调用的能力</p>
         <p>建议每次学习 20–30 分钟，少量、主动、反复。</p>
       </footer>
     </main>

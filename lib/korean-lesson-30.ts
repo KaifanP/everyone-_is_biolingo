@@ -1,0 +1,432 @@
+import { KoreanLesson } from "./korean-types";
+
+export const koreanLesson30Data: KoreanLesson = {
+  info: {
+    id: "lesson-30",
+    moduleId: "06",
+    number: 30,
+    title: "TOPIK I 迷你模拟测试",
+    titleEn: "TOPIK I Mini Mock Test",
+  },
+  objectives: [
+    "完成TOPIK I迷你模拟测试（PBT或IBT模式）",
+    "体验真实考试的题型和时间压力",
+    "分析错因并制定后续复习计划",
+  ],
+  warmup: {
+    questions: [
+      "TOPIK I的PBT和IBT有什么区别？",
+      "考试时如何分配时间？",
+    ],
+    culturalNote: "TOPIK I（初级）满分200分，1级需80分以上，2级需140分以上。考试包括听力和阅读两部分。",
+  },
+  input: {
+    dialogue: {
+      title: "模拟考试后",
+      lines: [
+        { speaker: "老师", korean: "시험 잘 봤어요?", chinese: "考试考得好吗？" },
+        { speaker: "学生", korean: "잘 모르겠어요. 틀린 문제가 많아요.", chinese: "不太确定。错题很多。" },
+        { speaker: "老师", korean: "괜찮아요. 어떤 문제가 어려웠어요?", chinese: "没关系。什么题难？" },
+        { speaker: "学生", korean: "듣기가 어려웠어요.", chinese: "听力难。" },
+      ],
+    },
+    vocabulary: [
+      { korean: "시험", chinese: "考试", partOfSpeech: "名词" },
+      { korean: "틀리다", chinese: "错", partOfSpeech: "动词" },
+      { korean: "어렵다", chinese: "难", partOfSpeech: "形容词" },
+      { korean: "듣기", chinese: "听力", partOfSpeech: "名词" },
+      { korean: "읽기", chinese: "阅读", partOfSpeech: "名词" },
+      { korean: "쓰기", chinese: "写作", partOfSpeech: "名词" },
+      { korean: "말하기", chinese: "口语", partOfSpeech: "名词" },
+      { korean: "점수", chinese: "分数", partOfSpeech: "名词" },
+      { korean: "합격", chinese: "合格/通过", partOfSpeech: "名词" },
+      { korean: "불합격", chinese: "不合格", partOfSpeech: "名词" },
+      { korean: "답안지", chinese: "答题卡", partOfSpeech: "名词" },
+      { korean: "문제", chinese: "题目/问题", partOfSpeech: "名词" },
+      { korean: "보기", chinese: "选项", partOfSpeech: "名词" },
+      { korean: "지문", chinese: "文章/段落", partOfSpeech: "名词" },
+      { korean: "시간 배분", chinese: "时间分配", partOfSpeech: "名词" },
+      { korean: "오답 노트", chinese: "错题本", partOfSpeech: "名词" },
+      { korean: "모의고사", chinese: "模拟考试", partOfSpeech: "名词" },
+      { korean: "실력", chinese: "实力", partOfSpeech: "名词" },
+      { korean: "레벨", chinese: "等级/级别", partOfSpeech: "名词" },
+      { korean: "초급", chinese: "初级", partOfSpeech: "名词" },
+      { korean: "중급", chinese: "中级", partOfSpeech: "名词" },
+      { korean: "고급", chinese: "高级", partOfSpeech: "名词" },
+      { korean: "맞히다", chinese: "答对", partOfSpeech: "动词" },
+      { korean: "풀다", chinese: "解题", partOfSpeech: "动词" },
+      { korean: "마킹하다", chinese: "涂卡", partOfSpeech: "动词" },
+      { korean: "제출하다", chinese: "提交", partOfSpeech: "动词" },
+      { korean: "복습하다", chinese: "复习", partOfSpeech: "动词" },
+      { korean: "예습하다", chinese: "预习", partOfSpeech: "动词" },
+      { korean: "외우다", chinese: "背/记忆", partOfSpeech: "动词" },
+      { korean: "틀리다", chinese: "弄错", partOfSpeech: "动词" },
+    ],
+  },
+  grammar: {
+    points: [
+      {
+        name: "PBT vs IBT",
+        nameEn: "PBT vs IBT",
+        structure: "PBT = 纸笔考试 / IBT = 机考",
+        meaning: "TOPIK I分为PBT（纸笔）和IBT（机考）两种形式。",
+        usage: "PBT：考场用纸笔作答，听力播放固定次数\nIBT：电脑上作答，听力可调节音量\n\n两者题型相同，但IBT可能有操作适应问题。",
+        examples: [
+          { korean: "PBT: 듣기 10문항 + 읽기 14문항 = 24문항 / 35분", chinese: "PBT：听力10题 + 阅读14题 = 24题 / 35分钟" },
+          { korean: "IBT: 듣기 10문항 + 읽기 10문항 = 20문항 / 27분", chinese: "IBT：听力10题 + 阅读10题 = 20题 / 27分钟" },
+        ],
+      },
+      {
+        name: "错因分析方法",
+        nameEn: "Error Analysis Method",
+        structure: "错题 → 分类 → 针对性复习",
+        meaning: "分析错题原因，制定针对性复习计划。",
+        usage: "常见错因：\n• 词汇不足 → 每天背20个单词\n• 语法不熟 → 每天复习2个语法点\n• 听力速度跟不上 → 每天听30分钟\n• 时间分配不合理 → 练习限时做题",
+        examples: [
+          { korean: "词汇不足 → 每天背20个单词", chinese: "词汇不足 → 每天背20个单词" },
+          { korean: "语法不熟 → 每天复习2个语法点", chinese: "语法不熟 → 每天复习2个语法点" },
+        ],
+      },
+      {
+        name: "间隔复习计划",
+        nameEn: "Spaced Repetition Plan",
+        structure: "1天 → 7天 → 30天",
+        meaning: "根据遗忘曲线安排复习时间。",
+        usage: "1天后复习第一次（巩固）\n7天后复习第二次（强化）\n30天后复习第三次（长期记忆）",
+        examples: [
+          { korean: "1天后：复习当天学的内容", chinese: "1天后：复习当天学的内容" },
+          { korean: "7天后：复习一周前学的内容", chinese: "7天后：复习一周前学的内容" },
+          { korean: "30天后：复习一个月前学的内容", chinese: "30天后：复习一个月前学的内容" },
+        ],
+      },
+    ],
+  },
+  analysis: {
+    commonErrors: [
+      {
+        wrong: "只做题不分析错因",
+        correct: "做题后必须分析错因，归类词汇/语法/听力/时间问题",
+        reason: "不分析错因会重复犯错。",
+      },
+      {
+        wrong: "不安排复习计划",
+        correct: "根据遗忘曲线安排1天/7天/30天复习",
+        reason: "不复习会很快遗忘。",
+      },
+      {
+        wrong: "考试时不分配时间",
+        correct: "先做有把握的题，不确定的题标记后回来检查",
+        reason: "时间分配不合理会导致会做的题没时间做。",
+      },
+    ],
+    keyQuestions: [
+      "PBT和IBT的题量和时间有什么不同？",
+      "如何分析错因并制定复习计划？",
+      "间隔复习的1天/7天/30天分别复习什么？",
+    ],
+  },
+  practice: [
+    {
+      type: "reading-choice",
+      instructions: "阅读对话，回答问题。",
+      instructionsEn: "Read the dialogue and answer.",
+      passage: "학생: 잘 모르겠어요. 틀린 문제가 많아요.\n선생님: 괜찮아요. 어떤 문제가 어려웠어요?\n학생: 듣기가 어려웠어요.",
+      question: "학생에게 어려운 것은 무엇이에요?",
+      options: ["읽기", "듣기", "쓰기", "말하기"],
+      answer: "듣기",
+    },
+    {
+      type: "matching",
+      instructions: "将错因与对应的复习方法配对。",
+      instructionsEn: "Match error causes to review methods.",
+      pairs: [
+        { left: "词汇不足", right: "每天背20个单词" },
+        { left: "语法不熟", right: "每天复习2个语法点" },
+        { left: "听力速度跟不上", right: "每天听30分钟韩语" },
+      ],
+    },
+    {
+      type: "fill-in",
+      instructions: "完成复习计划。",
+      instructionsEn: "Complete the review plan.",
+      sentences: [
+        { sentence: "1天后：复习___学的内容", answer: "当天", hint: "1天后复习什么？" },
+        { sentence: "7天后：复习___前学的内容", answer: "一周", hint: "7天后复习什么？" },
+        { sentence: "30天后：复习___前学的内容", answer: "一个月", hint: "30天后复习什么？" },
+      ],
+    },
+  ],
+  summary: {
+    keyPoints: [
+      {
+        title: "考试形式",
+        items: [
+          "PBT：听力10题+阅读14题=24题 / 35分钟",
+          "IBT：听力10题+阅读10题=20题 / 27分钟",
+          "满分200分，1级需80分，2级需140分",
+        ],
+      },
+      {
+        title: "复习策略",
+        items: [
+          "分析错因：词汇/语法/听力/时间",
+          "间隔复习：1天→7天→30天",
+          "每天坚持：背单词+复习语法+听力练习",
+        ],
+      },
+    ],
+    mindMap: `TOPIK I 模拟测试
+├─ PBT模式
+│  ├─ 听力：10题
+│  ├─ 阅读：14题
+│  └─ 时间：35分钟
+├─ IBT模式
+│  ├─ 听力：10题
+│  ├─ 阅读：10题
+│  └─ 时间：27分钟
+├─ 错因分析
+│  ├─ 词汇不足
+│  ├─ 语法不熟
+│  └─ 听力速度跟不上
+└─ 间隔复习
+   ├─ 1天后：巩固
+   ├─ 7天后：强化
+   └─ 30天后：长期记忆`,
+    selfTest: [
+      {
+        question: "PBT听力+阅读共多少题？",
+        options: ["20题", "24题", "28题", "30题"],
+        answer: "24题",
+      },
+      {
+        question: "TOPIK I 2级需要多少分？",
+        options: ["80分", "120分", "140分", "200分"],
+        answer: "140分",
+      },
+      {
+        question: "间隔复习第一次应该在什么时候？",
+        options: ["当天", "1天后", "7天后", "30天后"],
+        answer: "1天后",
+      },
+    ],
+  },
+  mockTest: {
+    mode: "pbt",
+    timeLimitMinutes: 35,
+    listeningQuestions: [
+      {
+        number: 1,
+        section: "listening",
+        question: "이것은 무엇입니까?",
+        options: ["사과", "바나나", "오렌지", "포도"],
+        answer: "사과",
+        explanation: "听力内容说'这是苹果'。",
+        transcript: "이것은 사과입니다.",
+      },
+      {
+        number: 2,
+        section: "listening",
+        question: "여자는 어디에 갑니까?",
+        options: ["학교", "병원", "은행", "식당"],
+        answer: "학교",
+        explanation: "听力内容说'我去学校'。",
+        transcript: "저는 학교에 갑니다.",
+      },
+      {
+        number: 3,
+        section: "listening",
+        question: "남자는 무엇을 먹습니까?",
+        options: ["비빔밥", "김치찌개", "된장찌개", "불고기"],
+        answer: "비빔밥",
+        explanation: "听力内容说'我吃拌饭'。",
+        transcript: "저는 비빔밥을 먹습니다.",
+      },
+      {
+        number: 4,
+        section: "listening",
+        question: "오늘 날씨가 어떻습니까?",
+        options: ["좋습니다", "나쁩니다", "춥습니다", "덥습니다"],
+        answer: "좋습니다",
+        explanation: "听力内容说'今天天气好'。",
+        transcript: "오늘 날씨가 좋습니다.",
+      },
+      {
+        number: 5,
+        section: "listening",
+        question: "지금 몇 시입니까?",
+        options: ["두 시", "세 시", "네 시", "다섯 시"],
+        answer: "세 시",
+        explanation: "听力内容说'现在三点'。",
+        transcript: "지금 세 시입니다.",
+      },
+      {
+        number: 6,
+        section: "listening",
+        question: "여자의 이름은 무엇입니까?",
+        options: ["미나", "수지", "영희", "순자"],
+        answer: "미나",
+        explanation: "听力内容说'我是美娜'。",
+        transcript: "저는 미나입니다.",
+      },
+      {
+        number: 7,
+        section: "listening",
+        question: "남자는 무엇을 합니까?",
+        options: ["책을 읽습니다", "음악을 듣습니다", "운동을 합니다", "잠을 잡니다"],
+        answer: "책을 읽습니다",
+        explanation: "听力内容说'我读书'。",
+        transcript: "저는 책을 읽습니다.",
+      },
+      {
+        number: 8,
+        section: "listening",
+        question: "이것은 얼마입니까?",
+        options: ["천 원", "이천 원", "삼천 원", "오천 원"],
+        answer: "이천 원",
+        explanation: "听力内容说'两千韩元'。",
+        transcript: "이천 원입니다.",
+      },
+      {
+        number: 9,
+        section: "listening",
+        question: "어디에서 만납니까?",
+        options: ["역", "학교", "집", "공원"],
+        answer: "역",
+        explanation: "听力内容说'在车站见面吧'。",
+        transcript: "역에서 만납시다.",
+      },
+      {
+        number: 10,
+        section: "listening",
+        question: "무엇을 마십니까?",
+        options: ["커피", "차", "물", "주스"],
+        answer: "커피",
+        explanation: "听力内容说'喝咖啡'。",
+        transcript: "커피를 마십니다.",
+      },
+    ],
+    readingQuestions: [
+      {
+        number: 11,
+        section: "reading",
+        passage: "민수 씨는 학생입니다. 아침마다 학교에 갑니다.",
+        question: "민수 씨는 아침마다 어디에 갑니까? (民秀每天早上去哪里？)",
+        options: ["학교", "병원", "은행", "식당"],
+        answer: "학교",
+        explanation: "文章说民秀每天早上去学校。",
+      },
+      {
+        number: 12,
+        section: "reading",
+        passage: "가: 도와주셔서 감사합니다.\n나: 아니에요.",
+        question: "가 씨는 왜 감사하다고 합니까? (甲为什么道谢？)",
+        options: ["도움을 받아서", "늦어서", "처음 만나서", "떠나서"],
+        answer: "도움을 받아서",
+        explanation: "因为对方提供了帮助，所以道谢。",
+      },
+      {
+        number: 13,
+        section: "reading",
+        passage: "이것은 무엇입니까? 이것은 책입니다.",
+        question: "이것은 무엇입니까? (这是什么？)",
+        options: ["책", "펜", "공책", "신문"],
+        answer: "책",
+        explanation: "文中说'这是书'。",
+      },
+      {
+        number: 14,
+        section: "reading",
+        passage: "저는 학생입니다. 저는 한국어를 공부합니다.",
+        question: "저는 무엇을 합니까? (我做什么？)",
+        options: ["한국어를 공부합니다", "영어를 공부합니다", "일본어를 공부합니다", "중국어를 공부합니다"],
+        answer: "한국어를 공부합니다",
+        explanation: "文中说'我学韩语'。",
+      },
+      {
+        number: 15,
+        section: "reading",
+        question: "다음 중 동사가 아닌 것은? (下列哪个不是动词？)",
+        options: ["먹다", "마시다", "크다", "가다"],
+        answer: "크다",
+        explanation: "크다是形容词（大），其他是动词。",
+      },
+      {
+        number: 16,
+        section: "reading",
+        passage: "오늘은 월요일입니다. 내일은 화요일입니다.",
+        question: "내일은 무슨 요일입니까? (明天是星期几？)",
+        options: ["월요일", "화요일", "수요일", "목요일"],
+        answer: "화요일",
+        explanation: "文中说'明天是星期二'。",
+      },
+      {
+        number: 17,
+        section: "reading",
+        question: "'어서 오세요'는 어디에서 사용합니까? ('欢迎光临'在哪里使用？)",
+        options: ["식당", "학교", "병원", "은행"],
+        answer: "식당",
+        explanation: "어서 오세요是餐厅等场所的欢迎语。",
+      },
+      {
+        number: 18,
+        section: "reading",
+        passage: "이것은 사과입니다. 그것은 바나나입니다.",
+        question: "이것은 무엇입니까? (这是什么？)",
+        options: ["사과", "바나나", "오렌지", "포도"],
+        answer: "사과",
+        explanation: "文中说'这是苹果'。",
+      },
+      {
+        number: 19,
+        section: "reading",
+        question: "다음 중 '예'의 반대말은? (下列哪个是'是'的反义词？)",
+        options: ["아니요", "네", "감사합니다", "미안합니다"],
+        answer: "아니요",
+        explanation: "아니요 = 不是（예的反义词）",
+      },
+      {
+        number: 20,
+        section: "reading",
+        passage: "저는 서울에 삽니다. 서울은 한국의 수도입니다.",
+        question: "저는 어디에 삽니다? (我住在哪里？)",
+        options: ["서울", "부산", "대구", "인천"],
+        answer: "서울",
+        explanation: "文中说'我住在首尔'。",
+      },
+      {
+        number: 21,
+        section: "reading",
+        question: "다음 중 '가다'의 반대말은? (下列哪个是'去'的反义词？)",
+        options: ["오다", "먹다", "마시다", "보다"],
+        answer: "오다",
+        explanation: "오다 = 来（가다的反义词）",
+      },
+      {
+        number: 22,
+        section: "reading",
+        passage: "이 식당은 맛있습니다. 비빔밥이 유명합니다.",
+        question: "이 식당에서 유명한 것은 무엇입니까? (这家餐厅有名的是什么？)",
+        options: ["비빔밥", "김치찌개", "된장찌개", "불고기"],
+        answer: "비빔밥",
+        explanation: "文中说'拌饭很有名'。",
+      },
+      {
+        number: 23,
+        section: "reading",
+        question: "다음 중 형용사가 아닌 것은? (下列哪个不是形容词？)",
+        options: ["맛있다", "예쁘다", "읽다", "크다"],
+        answer: "읽다",
+        explanation: "읽다是动词（读），其他是形容词。",
+      },
+      {
+        number: 24,
+        section: "reading",
+        passage: "약국은 은행 옆에 있습니다. 은행은 우체국 앞에 있습니다.",
+        question: "약국은 어디에 있습니까? (药店在哪里？)",
+        options: ["은행 옆", "우체국 앞", "학교 옆", "식당 앞"],
+        answer: "은행 옆",
+        explanation: "文中说'药店在银行旁边'。",
+      },
+    ],
+  },
+};

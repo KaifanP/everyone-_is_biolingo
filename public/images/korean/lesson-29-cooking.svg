@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">주방에서 요리하는 여자</title>
+  <desc id="desc">一位女性正在厨房的炉灶前用锅做饭</desc>
+  <rect width="640" height="360" fill="#fff7ed"/>
+  <rect y="250" width="640" height="110" fill="#d6d3d1"/>
+  <rect x="390" y="165" width="205" height="95" rx="8" fill="#78716c"/>
+  <circle cx="455" cy="214" r="24" fill="#292524"/>
+  <path d="M420 184h105l-12 28h-81z" fill="#44403c"/>
+  <path d="M458 169c-18-18 18-25 0-46M485 169c-18-18 18-25 0-46" fill="none" stroke="#a8a29e" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="250" cy="112" r="42" fill="#f5c2a8"/>
+  <path d="M205 111c0-58 91-65 91 1-20-13-67-16-91-1z" fill="#3f3f46"/>
+  <path d="M205 160q45-24 90 0l28 101H178z" fill="#fb7185"/>
+  <path d="M288 176l105 34" fill="none" stroke="#f5c2a8" stroke-width="22" stroke-linecap="round"/>
+  <path d="M393 210l53-14" fill="none" stroke="#57534e" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="237" cy="108" r="4"/><circle cx="267" cy="108" r="4"/>
+  <path d="M240 130q13 9 25 0" fill="none" stroke="#9f1239" stroke-width="4" stroke-linecap="round"/>
+</svg>
