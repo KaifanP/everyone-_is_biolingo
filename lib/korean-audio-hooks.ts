@@ -54,54 +54,22 @@ export function useKoreanTTS() {
 export function useKoreanAudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const tts = useKoreanTTS();
 
-  const basePath = "/everyone-_is_biolingo";
-
   const play = useCallback(
-    (text: string, audioFile?: string) => {
+    (text: string) => {
       setError(null);
-
-      if (audioFile) {
-        const audio = new Audio(`${basePath}/audio/korean/${audioFile}`);
-        audioRef.current = audio;
-
-        audio.onplay = () => setIsPlaying(true);
-        audio.onended = () => setIsPlaying(false);
-        audio.onerror = () => {
-          setIsPlaying(false);
-          if (tts.hasTTS) {
-            tts.play(text);
-            setIsPlaying(true);
-          } else {
-            setError("韩语语音不可用");
-          }
-        };
-
-        audio.play().catch(() => {
-          if (tts.hasTTS) {
-            tts.play(text);
-            setIsPlaying(true);
-          } else {
-            setError("韩语语音不可用");
-          }
-        });
-      } else if (tts.hasTTS) {
+      if (tts.hasTTS) {
         tts.play(text);
         setIsPlaying(true);
       } else {
-        setError("韩语语音不可用");
+        setError("此设备没有可用的 ko-KR 韩语声线");
       }
     },
-    [tts, basePath]
+    [tts]
   );
 
   const stop = useCallback(() => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
     tts.stop();
     setIsPlaying(false);
   }, [tts]);

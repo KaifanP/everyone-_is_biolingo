@@ -1,7 +1,6 @@
 "use client";
 
 import { useKoreanAudioPlayer } from "@/lib/korean-audio-hooks";
-import { getAudioEntry } from "@/lib/korean-audio-manifest";
 
 interface KoreanAudioPlayerProps {
   audioId?: string;
@@ -10,17 +9,14 @@ interface KoreanAudioPlayerProps {
   size?: "sm" | "md";
 }
 
-export default function KoreanAudioPlayer({ audioId, text, label, size = "md" }: KoreanAudioPlayerProps) {
+export default function KoreanAudioPlayer({ text, label, size = "md" }: KoreanAudioPlayerProps) {
   const { play, stop, isPlaying, error } = useKoreanAudioPlayer();
-  const entry = audioId ? getAudioEntry(audioId) : undefined;
-  const isLocalTTS = entry?.source === "tts";
 
   const handleClick = () => {
     if (isPlaying) {
       stop();
     } else {
-      const audioFile = entry?.file;
-      play(text, audioFile);
+      play(text);
     }
   };
 
@@ -39,11 +35,9 @@ export default function KoreanAudioPlayer({ audioId, text, label, size = "md" }:
       >
         {isPlaying ? "⏹" : "▶"}
       </button>
-      {(isLocalTTS || !entry) && (
-        <span className="text-[10px] text-amber-500 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 px-1.5 py-0.5 rounded-full">
-          {isLocalTTS ? "MiMo 合成语音" : "浏览器合成语音"}
-        </span>
-      )}
+      <span className="text-[10px] text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-1.5 py-0.5 rounded-full">
+        韩语声线 ko-KR
+      </span>
       {error && (
         <span className="text-[10px] text-red-500 dark:text-red-400">
           {error}

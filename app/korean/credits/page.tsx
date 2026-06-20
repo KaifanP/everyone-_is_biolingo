@@ -1,10 +1,6 @@
 import Link from "next/link";
-import { koreanAudioManifest } from "@/lib/korean-audio-manifest";
 
 export default function KoreanCreditsPage() {
-  const humanAudios = koreanAudioManifest.filter((a) => a.source === "human");
-  const ttsAudios = koreanAudioManifest.filter((a) => a.source === "tts");
-
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
       <div className="max-w-3xl mx-auto px-4 py-8">
@@ -32,15 +28,15 @@ export default function KoreanCreditsPage() {
             <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
               <li className="flex items-start gap-2">
                 <span className="text-emerald-500 mt-1">✓</span>
-                <span>课程对话、核心听力、听写和模拟听力使用本地 MiMo 2.5 TTS 音频</span>
+                <span>所有播放按钮均强制请求浏览器的 ko-KR 韩语声线</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-emerald-500 mt-1">✓</span>
-                <span>未收录本地文件的词汇卡会降级使用浏览器 ko-KR SpeechSynthesis</span>
+                <span>不再使用 MiMo 的英文默认声线朗读韩文</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-emerald-500 mt-1">✓</span>
-                <span>每个本地音频均记录模型、生成日期和 SHA-256 校验值</span>
+                <span>实际音色由操作系统或浏览器提供，因设备而异</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-emerald-500 mt-1">✓</span>
@@ -50,60 +46,16 @@ export default function KoreanCreditsPage() {
           </div>
         </section>
 
-        {humanAudios.length > 0 && (
-          <section className="mb-10">
-            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
-              真人录音（{humanAudios.length} 条）
-            </h2>
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
-              <div className="space-y-4">
-                {humanAudios.map((audio) => (
-                  <div key={audio.id} className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl">
-                    <p className="font-bold text-gray-800 dark:text-gray-200 text-sm">
-                      {audio.text}
-                    </p>
-                    <div className="mt-1 grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-gray-500 dark:text-gray-400">
-                      <span>文件：{audio.file}</span>
-                      <span>作者：{audio.author ?? "未知"}</span>
-                      <span>许可：{audio.license ?? "未知"}</span>
-                      {audio.sourceUrl && (
-                        <span>
-                          来源：
-                          <a href={audio.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-indigo-500 hover:underline">
-                            链接
-                          </a>
-                        </span>
-                      )}
-                      {audio.licenseUrl && (
-                        <span>
-                          许可链接：
-                          <a href={audio.licenseUrl} target="_blank" rel="noopener noreferrer" className="text-indigo-500 hover:underline">
-                            链接
-                          </a>
-                        </span>
-                      )}
-                      {audio.modified && <span>处理：{audio.modified}</span>}
-                      {audio.sha256 && <span>校验：{audio.sha256.slice(0, 16)}…</span>}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
         <section className="mb-10">
           <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
             合成语音说明
           </h2>
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
             <p className="text-gray-600 dark:text-gray-400 mb-2">
-              {ttsAudios.length > 0
-                ? `当前有 ${ttsAudios.length} 条本地音频由 MiMo 2.5 TTS 生成，界面会标注“MiMo 合成语音”。`
-                : "当前课程暂无合成语音音频。"}
+              当前使用 Web Speech API，并将语言固定为 ko-KR；系统会优先选择已安装的韩语声线。
             </p>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              本地音频可直接播放；只有缺少本地文件时才依赖浏览器韩语 TTS。生成方法见小米 MiMo 官方语音合成文档。
+              如果设备没有安装韩语语音包，页面会明确提示“没有可用的 ko-KR 韩语声线”，不会退回英文声线。
             </p>
           </div>
         </section>
@@ -121,7 +73,7 @@ export default function KoreanCreditsPage() {
               <li>• TOPIK 官方考试大纲 — 题型和分级标准参考</li>
             </ul>
             <p className="mt-4 text-xs text-gray-400 dark:text-gray-500">
-              MiMo 音频属于合成语音，不冒充真人录音；后续可逐步加入明确授权的真人发音。
+              先前生成的 MiMo 英文声线音频已停止在课程中使用；后续只加入经过韩语母语者抽检的固定音频。
             </p>
           </div>
         </section>
