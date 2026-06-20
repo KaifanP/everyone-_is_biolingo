@@ -34,7 +34,7 @@ export default function KoreanOverview() {
             href="/korean/credits"
             className="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
           >
-            音频授权
+            语音说明
           </Link>
         </div>
 

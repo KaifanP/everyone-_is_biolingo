@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "validate:korean": "node scripts/validate-korean.js",
-    "generate:korean-audio": "node scripts/generate-korean-audio.mjs"
+    "validate:korean": "node scripts/validate-korean.js"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",

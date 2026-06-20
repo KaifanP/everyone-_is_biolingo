@@ -3,7 +3,6 @@ const fs = require("fs");
 const path = require("path");
 
 const libDir = path.join(__dirname, "..", "lib");
-const publicDir = path.join(__dirname, "..", "public");
 const componentsDir = path.join(__dirname, "..", "components", "korean");
 const pagesDir = path.join(__dirname, "..", "app", "korean");
 
@@ -83,6 +82,13 @@ const KNOWN_ERRORS = [
   { pattern: /词首发近浊音/g, desc: "word-initial lax stops should not be taught as voiced" },
   { pattern: /도서관이 9시에 열어요/g, desc: "intransitive library opening requires 열려요" },
   { pattern: /korean:\s*"总的来说"/g, desc: "Chinese text found in Korean vocabulary field" },
+  { pattern: /基础辅音又称「松音」/g, desc: "not all basic consonants are lax consonants" },
+  { pattern: /横写元音（ㅏ/g, desc: "vertical vowels are mislabeled as horizontal" },
+  { pattern: /纵写元音（ㅗ/g, desc: "horizontal vowels are mislabeled as vertical" },
+  { pattern: /声带不振动/g, desc: "tense consonants must not be reduced to voicelessness" },
+  { pattern: /목말르다/g, desc: "misspelling - use 목마르다" },
+  { pattern: /PBT：听力10题/g, desc: "site mini-mock counts must not be presented as official PBT format" },
+  { pattern: /IBT：听力10题/g, desc: "site mini-mock counts must not be presented as official IBT format" },
 ];
 for (const lesson of lessonFiles) {
   let lessonErrors = 0;
@@ -186,41 +192,17 @@ if (fs.existsSync(progressPath)) {
 }
 
 // ============================================================
-// 7. Audio manifest
+// 7. Korean browser speech configuration
 // ============================================================
-console.log("\n=== 7. Audio manifest ===");
-const audioManifestPath = path.join(libDir, "korean-audio-manifest.ts");
-if (fs.existsSync(audioManifestPath)) {
-  const audioContent = fs.readFileSync(audioManifestPath, "utf-8");
-  if (audioContent.includes("KoreanAudioEntry")) {
-    ok("Audio manifest has KoreanAudioEntry type");
-  } else {
-    err("Audio manifest missing KoreanAudioEntry type");
-  }
-  if (audioContent.includes("koreanAudioManifest")) {
-    ok("Audio manifest exports koreanAudioManifest");
-  } else {
-    err("Audio manifest missing koreanAudioManifest array");
-  }
+console.log("\n=== 7. Korean browser speech ===");
+const audioHooksPath = path.join(libDir, "korean-audio-hooks.ts");
+const audioHooksContent = fs.readFileSync(audioHooksPath, "utf-8");
+if (audioHooksContent.includes('const TTS_LANG = "ko-KR"')) ok("Browser speech language is fixed to ko-KR");
+else err("Browser speech language must be fixed to ko-KR");
+if (audioHooksContent.includes("mimo_default") || audioHooksContent.includes("audio/korean")) {
+  err("Deprecated MiMo/local Korean audio path is still active");
 } else {
-  err("Missing korean-audio-manifest.ts");
-}
-
-const audioDir = path.join(publicDir, "audio", "korean");
-if (fs.existsSync(audioDir)) {
-  ok("public/audio/korean/ directory exists");
-  const audioFiles = fs.readdirSync(audioDir).filter((file) => file.endsWith(".mp3"));
-  if (audioFiles.length < 150) {
-    err(`Only ${audioFiles.length} local Korean audio files found (need at least 150)`);
-  } else {
-    ok(`${audioFiles.length} local Korean audio files found`);
-  }
-  const manifestFiles = [...fs.readFileSync(audioManifestPath, "utf8").matchAll(/"file":\s*"([^"]+\.mp3)"/g)].map((match) => match[1]);
-  const missingAudio = manifestFiles.filter((file) => !fs.existsSync(path.join(audioDir, file)));
-  if (missingAudio.length) err(`Manifest references missing audio: ${missingAudio.join(", ")}`);
-  else ok(`All ${manifestFiles.length} manifest audio files exist`);
-} else {
-  err("public/audio/korean/ directory missing");
+  ok("Deprecated MiMo/local audio playback is disabled");
 }
 
 // ============================================================
@@ -385,7 +367,6 @@ if (lesson30) {
 // 13. Audio hooks
 // ============================================================
 console.log("\n=== 13. Audio hooks ===");
-const audioHooksPath = path.join(libDir, "korean-audio-hooks.ts");
 if (fs.existsSync(audioHooksPath)) {
   const hooksContent = fs.readFileSync(audioHooksPath, "utf-8");
   if (hooksContent.includes("useKoreanTTS")) {

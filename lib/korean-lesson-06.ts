@@ -32,8 +32,8 @@ export const koreanLesson06Data: KoreanLesson = {
     vocabulary: [
       { korean: "안녕하세요", chinese: "你好（敬语）", partOfSpeech: "感叹词" },
       { korean: "저는", chinese: "我（谦称+主题助词）", partOfSpeech: "代词+助词" },
-      { korean: "이에요", chinese: "是（敬语）", partOfSpeech: "形容词" },
-      { korean: "아니에요", chinese: "不是（敬语）", partOfSpeech: "形容词" },
+      { korean: "이에요", chinese: "是（敬语）", partOfSpeech: "系词表达" },
+      { korean: "아니에요", chinese: "不是（敬语）", partOfSpeech: "系词表达" },
       { korean: "캐나다", chinese: "加拿大", partOfSpeech: "名词" },
       { korean: "안녕히 가세요", chinese: "请慢走（告别语）", partOfSpeech: "感叹词" },
       { korean: "안녕히 계세요", chinese: "请留步（告别语）", partOfSpeech: "感叹词" },

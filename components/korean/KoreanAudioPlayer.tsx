@@ -16,7 +16,7 @@ export default function KoreanAudioPlayer({ text, label, size = "md" }: KoreanAu
     if (isPlaying) {
       stop();
     } else {
-      play(text);
+      void play(text);
     }
   };
 

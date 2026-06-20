@@ -30,8 +30,8 @@ export const koreanLesson23Data: KoreanLesson = {
       ],
     },
     vocabulary: [
-      { korean: "-아/어야 하다", chinese: "必须", partOfSpeech: "补助动词" },
-      { korean: "-(으)면 안 되다", chinese: "不能", partOfSpeech: "补助动词" },
+      { korean: "-아/어야 하다", chinese: "必须", partOfSpeech: "语法结构" },
+      { korean: "-(으)면 안 되다", chinese: "不能", partOfSpeech: "语法结构" },
       { korean: "담배", chinese: "烟", partOfSpeech: "名词" },
       { korean: "피우다", chinese: "抽（烟）", partOfSpeech: "动词" },
       { korean: "규칙", chinese: "规则", partOfSpeech: "名词" },

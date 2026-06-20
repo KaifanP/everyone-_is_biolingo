@@ -33,7 +33,7 @@ export const koreanLesson03Data: KoreanLesson = {
     vocabulary: [
       { korean: "아메리카노", chinese: "美式咖啡", romanization: "amerikano", partOfSpeech: "名词" },
       { korean: "하나", chinese: "一个", romanization: "hana", partOfSpeech: "数词" },
-      { korean: "주세요", chinese: "请给我", romanization: "juseyo", partOfSpeech: "补助动词" },
+      { korean: "주세요", chinese: "请给我", romanization: "juseyo", partOfSpeech: "请求表达" },
       { korean: "따뜻하다", chinese: "热的", romanization: "ttatteushada", partOfSpeech: "形容词" },
       { korean: "차갑다", chinese: "冷的", romanization: "chagapda", partOfSpeech: "形容词" },
     ],
@@ -77,7 +77,7 @@ export const koreanLesson03Data: KoreanLesson = {
         nameEn: "Tense Consonants",
         structure: "ㄲ ㄸ ㅃ ㅆ ㅉ",
         meaning: "紧音（경음）发音时喉部紧缩：\n• ㄲ(kk) = ㄱ的紧音\n• ㄸ(tt) = ㄷ的紧音\n• ㅃ(pp) = ㅂ的紧音\n• ㅆ(ss) = ㅅ的紧音\n• ㅉ(jj) = ㅈ的紧音",
-        usage: "发音方法：\n• 喉部肌肉收紧，声带不振动\n• 不送气（气流很弱）\n• 类似用力挤喉时发出的音\n\n和松音/送气音对比：\n• ㄱ（松）→ ㅋ（送气）→ ㄲ（紧）\n• ㄷ（松）→ ㅌ（送气）→ ㄸ（紧）\n• ㅂ（松）→ ㅍ（送气）→ ㅃ（紧）",
+        usage: "发音方法：\n• 喉部保持紧张，起声短而紧\n• 几乎不送气（气流很弱）\n• 后接元音的起始音高通常较高\n\n不要只用声带是否振动来判断紧音；还要同时听起声时长、送气量和后续音高。\n\n和松音/送气音对比：\n• ㄱ（松）→ ㅋ（送气）→ ㄲ（紧）\n• ㄷ（松）→ ㅌ（送气）→ ㄸ（紧）\n• ㅂ（松）→ ㅍ（送气）→ ㅃ（紧）",
         examples: [
           { korean: "까", chinese: "ㄲ + ㅏ = kka" },
           { korean: "따", chinese: "ㄸ + ㅏ = tta" },
@@ -98,8 +98,8 @@ export const koreanLesson03Data: KoreanLesson = {
       },
       {
         wrong: "把ㄲ发成ㄱ或ㅋ",
-        correct: "ㄲ喉部紧缩，不送气，声带不振动",
-        reason: "紧音需要肌肉紧张，和松音、送气音都不同。",
+        correct: "ㄲ起声紧、几乎不送气，后接元音的起始音高通常较高",
+        reason: "紧音要结合喉部紧张、起声时长、送气量和音高来辨别。",
       },
       {
         wrong: "把ㅘ发成ㅗ+ㅏ两个音",

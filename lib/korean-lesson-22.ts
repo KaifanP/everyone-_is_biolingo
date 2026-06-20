@@ -30,8 +30,8 @@ export const koreanLesson22Data: KoreanLesson = {
       ],
     },
     vocabulary: [
-      { korean: "-(으)ㄹ 수 있다", chinese: "能/会", partOfSpeech: "补助动词" },
-      { korean: "-아/어도 되다", chinese: "可以", partOfSpeech: "补助动词" },
+      { korean: "-(으)ㄹ 수 있다", chinese: "能/会", partOfSpeech: "语法结构" },
+      { korean: "-아/어도 되다", chinese: "可以", partOfSpeech: "语法结构" },
       { korean: "조금", chinese: "一点", partOfSpeech: "副词" },
       { korean: "사진", chinese: "照片", partOfSpeech: "名词" },
       { korean: "찍다", chinese: "拍", partOfSpeech: "动词" },

@@ -30,7 +30,7 @@ export const koreanLesson21Data: KoreanLesson = {
       ],
     },
     vocabulary: [
-      { korean: "주세요", chinese: "请给我", partOfSpeech: "补助动词" },
+      { korean: "주세요", chinese: "请给我", partOfSpeech: "请求表达" },
       { korean: "-(으)세요", chinese: "请……（敬语）", partOfSpeech: "敬语词尾" },
       { korean: "드릴까요", chinese: "要点什么？（敬语）", partOfSpeech: "动词" },
       { korean: "음료", chinese: "饮料", partOfSpeech: "名词" },
@@ -62,7 +62,7 @@ export const koreanLesson21Data: KoreanLesson = {
       { korean: "배달하다", chinese: "配送", partOfSpeech: "动词" },
       { korean: "도와주세요", chinese: "请帮忙", partOfSpeech: "动词" },
       { korean: "잠깐만요", chinese: "请稍等", partOfSpeech: "感叹词" },
-      { korean: "감사합니다", chinese: "谢谢", partOfSpeech: "形容词" },
+      { korean: "감사합니다", chinese: "谢谢", partOfSpeech: "惯用表达" },
     ],
   },
   grammar: {

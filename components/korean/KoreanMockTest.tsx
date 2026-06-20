@@ -82,29 +82,29 @@ export default function KoreanMockTest({ mockTest, lessonId }: Props) {
             🎯 TOPIK I 迷你模拟测试
           </h3>
           <p className="text-gray-600 dark:text-gray-400 mb-6">
-            选择考试模式开始测试。计时开始后不可暂停。
+            选择练习模式开始测试。以下题量与时间是本站压缩配置，并非正式TOPIK考试规格；计时开始后不可暂停。
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <button
               onClick={() => startTest("pbt")}
               className="p-6 bg-white dark:bg-gray-800 rounded-xl border-2 border-red-300 dark:border-red-700 hover:border-red-500 dark:hover:border-red-500 transition-colors text-left"
             >
-              <div className="text-2xl font-bold text-red-700 dark:text-red-300 mb-2">PBT 模式</div>
+              <div className="text-2xl font-bold text-red-700 dark:text-red-300 mb-2">纸笔风格 · 迷你</div>
               <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
                 <p>听力 10题 + 阅读 14题 = 24题</p>
                 <p>时间：35分钟</p>
-                <p>满分：200分</p>
+                <p>本站练习分：按答对题数计算</p>
               </div>
             </button>
             <button
               onClick={() => startTest("ibt")}
               className="p-6 bg-white dark:bg-gray-800 rounded-xl border-2 border-orange-300 dark:border-orange-700 hover:border-orange-500 dark:hover:border-orange-500 transition-colors text-left"
             >
-              <div className="text-2xl font-bold text-orange-700 dark:text-orange-300 mb-2">IBT 模式</div>
+              <div className="text-2xl font-bold text-orange-700 dark:text-orange-300 mb-2">机考风格 · 迷你</div>
               <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
                 <p>听力 10题 + 阅读 10题 = 20题</p>
                 <p>时间：27分钟</p>
-                <p>满分：200分</p>
+                <p>本站练习分：按答对题数计算</p>
               </div>
             </button>
           </div>

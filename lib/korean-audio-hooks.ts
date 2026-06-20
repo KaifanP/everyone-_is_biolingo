@@ -4,21 +4,42 @@ import { useCallback, useRef, useState } from "react";
 
 const TTS_LANG = "ko-KR";
 
+function findKoreanVoice(voices: SpeechSynthesisVoice[]) {
+  const koreanVoices = voices.filter((voice) =>
+    voice.lang.toLowerCase().replaceAll("_", "-").startsWith("ko")
+  );
+  return (
+    koreanVoices.find((voice) => voice.name.toLowerCase().includes("yuna")) ??
+    koreanVoices.find((voice) => voice.localService) ??
+    koreanVoices[0]
+  );
+}
+
+function waitForKoreanVoice(): Promise<SpeechSynthesisVoice | undefined> {
+  const immediate = findKoreanVoice(window.speechSynthesis.getVoices());
+  if (immediate) return Promise.resolve(immediate);
+
+  return new Promise((resolve) => {
+    const finish = () => {
+      window.speechSynthesis.removeEventListener("voiceschanged", handleVoicesChanged);
+      window.clearTimeout(timeoutId);
+      resolve(findKoreanVoice(window.speechSynthesis.getVoices()));
+    };
+    const handleVoicesChanged = () => finish();
+    const timeoutId = window.setTimeout(finish, 1200);
+    window.speechSynthesis.addEventListener("voiceschanged", handleVoicesChanged, { once: true });
+  });
+}
+
 export function useKoreanTTS() {
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const play = useCallback((text: string) => {
+  const play = useCallback(async (text: string) => {
     if (typeof window === "undefined") return false;
     window.speechSynthesis.cancel();
 
-    const koreanVoices = window.speechSynthesis.getVoices().filter((voice) =>
-      voice.lang.toLowerCase().replaceAll("_", "-").startsWith("ko")
-    );
-    const koVoice =
-      koreanVoices.find((voice) => voice.name.toLowerCase().includes("yuna")) ??
-      koreanVoices.find((voice) => voice.localService) ??
-      koreanVoices[0];
+    const koVoice = await waitForKoreanVoice();
 
     if (!koVoice) return false;
 
@@ -46,16 +67,13 @@ export function useKoreanTTS() {
 }
 
 export function useKoreanAudioPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const tts = useKoreanTTS();
 
   const play = useCallback(
-    (text: string) => {
+    async (text: string) => {
       setError(null);
-      if (tts.play(text)) {
-        setIsPlaying(true);
-      } else {
+      if (!(await tts.play(text))) {
         setError("此设备没有可用的 ko-KR 韩语声线");
       }
     },
@@ -64,8 +82,7 @@ export function useKoreanAudioPlayer() {
 
   const stop = useCallback(() => {
     tts.stop();
-    setIsPlaying(false);
   }, [tts]);
 
-  return { play, stop, isPlaying, error };
+  return { play, stop, isPlaying: tts.isPlaying, error };
 }

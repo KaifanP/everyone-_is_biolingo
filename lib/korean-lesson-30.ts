@@ -9,13 +9,13 @@ export const koreanLesson30Data: KoreanLesson = {
     titleEn: "TOPIK I Mini Mock Test",
   },
   objectives: [
-    "完成TOPIK I迷你模拟测试（PBT或IBT模式）",
-    "体验真实考试的题型和时间压力",
+    "完成本站TOPIK I迷你模拟测试（纸笔风格或机考风格）",
+    "在压缩题量下练习考试操作和时间管理",
     "分析错因并制定后续复习计划",
   ],
   warmup: {
     questions: [
-      "TOPIK I的PBT和IBT有什么区别？",
+      "纸笔考试和机考的作答方式有什么区别？",
       "考试时如何分配时间？",
     ],
     culturalNote: "TOPIK I（初级）满分200分，1级需80分以上，2级需140分以上。考试包括听力和阅读两部分。",
@@ -66,14 +66,14 @@ export const koreanLesson30Data: KoreanLesson = {
   grammar: {
     points: [
       {
-        name: "PBT vs IBT",
-        nameEn: "PBT vs IBT",
-        structure: "PBT = 纸笔考试 / IBT = 机考",
-        meaning: "TOPIK I分为PBT（纸笔）和IBT（机考）两种形式。",
-        usage: "PBT：考场用纸笔作答，听力播放固定次数\nIBT：电脑上作答，听力可调节音量\n\n两者题型相同，但IBT可能有操作适应问题。",
+        name: "本站迷你模拟模式",
+        nameEn: "Mini Mock Modes on This Site",
+        structure: "纸笔风格练习 / 机考风格练习",
+        meaning: "本站提供两套压缩练习流程，用来熟悉纸笔与屏幕作答场景；它们不是正式考试规格。",
+        usage: "纸笔风格：24题 / 35分钟\n机考风格：20题 / 27分钟\n\n题量和时间是本站为短时练习设置的迷你配置，不代表正式TOPIK I。正式考试的形式、题量、时间与报名要求请以TOPIK官网当次公告为准。",
         examples: [
-          { korean: "PBT: 듣기 10문항 + 읽기 14문항 = 24문항 / 35분", chinese: "PBT：听力10题 + 阅读14题 = 24题 / 35分钟" },
-          { korean: "IBT: 듣기 10문항 + 읽기 10문항 = 20문항 / 27분", chinese: "IBT：听力10题 + 阅读10题 = 20题 / 27分钟" },
+          { korean: "미니 연습: 듣기 10문항 + 읽기 14문항", chinese: "本站纸笔风格练习：听力10题 + 阅读14题" },
+          { korean: "미니 연습: 듣기 10문항 + 읽기 10문항", chinese: "本站机考风格练习：听力10题 + 阅读10题" },
         ],
       },
       {
@@ -120,7 +120,7 @@ export const koreanLesson30Data: KoreanLesson = {
       },
     ],
     keyQuestions: [
-      "PBT和IBT的题量和时间有什么不同？",
+      "本站两种迷你模式的题量和时间有什么不同？",
       "如何分析错因并制定复习计划？",
       "间隔复习的1天/7天/30天分别复习什么？",
     ],
@@ -159,11 +159,12 @@ export const koreanLesson30Data: KoreanLesson = {
   summary: {
     keyPoints: [
       {
-        title: "考试形式",
+        title: "本站迷你模拟配置",
         items: [
-          "PBT：听力10题+阅读14题=24题 / 35分钟",
-          "IBT：听力10题+阅读10题=20题 / 27分钟",
-          "满分200分，1级需80分，2级需140分",
+          "纸笔风格：听力10题+阅读14题=24题 / 35分钟",
+          "机考风格：听力10题+阅读10题=20题 / 27分钟",
+          "以上是本站压缩练习配置，不是正式考试题量与时间",
+          "正式考试信息及成绩认定以TOPIK官网为准",
         ],
       },
       {
@@ -176,11 +177,11 @@ export const koreanLesson30Data: KoreanLesson = {
       },
     ],
     mindMap: `TOPIK I 模拟测试
-├─ PBT模式
+├─ 纸笔风格（本站迷你配置）
 │  ├─ 听力：10题
 │  ├─ 阅读：14题
 │  └─ 时间：35分钟
-├─ IBT模式
+├─ 机考风格（本站迷你配置）
 │  ├─ 听力：10题
 │  ├─ 阅读：10题
 │  └─ 时间：27分钟
@@ -194,7 +195,7 @@ export const koreanLesson30Data: KoreanLesson = {
    └─ 30天后：长期记忆`,
     selfTest: [
       {
-        question: "PBT听力+阅读共多少题？",
+        question: "本站纸笔风格迷你模式共多少题？",
         options: ["20题", "24题", "28题", "30题"],
         answer: "24题",
       },
