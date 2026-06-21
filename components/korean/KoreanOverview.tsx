@@ -7,7 +7,7 @@ import { koreanModules } from "@/lib/korean-types";
 import { useKoreanProgress } from "@/lib/korean-progress";
 import { SKILL_CONFIG, type SkillCategory } from "@/lib/korean-progress-core";
 import ClientOnly from "@/components/ClientOnly";
-import { KoreanReviewCenter } from "@/app/korean/review/page";
+import KoreanReviewCenter from "@/components/korean/KoreanReviewCenter";
 
 const MODULE_GRADIENTS = [
   "from-indigo-500 to-purple-600",

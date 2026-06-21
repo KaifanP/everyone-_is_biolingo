@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { KoreanReviewCenter } from "@/app/korean/review/page";
+import KoreanReviewCenter from "@/components/korean/KoreanReviewCenter";
 
 export default function KoreanReviewEmbed() {
   const [expanded, setExpanded] = useState(false);
