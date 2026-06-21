@@ -18,7 +18,12 @@ const SOURCE_LABELS: Record<string, string> = {
 
 type ViewMode = "queue" | "mistakeBook" | "review" | "result";
 
-export default function KoreanReviewPage() {
+interface KoreanReviewCenterProps {
+  embedded?: boolean;
+  onExit?: () => void;
+}
+
+export function KoreanReviewCenter({ embedded = false, onExit }: KoreanReviewCenterProps) {
   const {
     getUnresolvedMistakes,
     getDueReviews,
@@ -151,7 +156,7 @@ export default function KoreanReviewPage() {
     const lp = getLessonProgress(selectedLesson);
 
     return (
-      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
+      <div className={embedded ? "" : "min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900"}>
         <div className="max-w-2xl mx-auto px-4 py-8">
           <Link
             href="/korean/review"
@@ -291,14 +296,14 @@ export default function KoreanReviewPage() {
             </div>
           </motion.div>
         </div>
-      </main>
+      </div>
     );
   }
 
   if (viewMode === "review" && currentQuestion) {
     const lessonInfo = lessonLookup[selectedLesson ?? ""];
     return (
-      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
+      <div className={embedded ? "" : "min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900"}>
         <div className="max-w-2xl mx-auto px-4 py-8">
           <Link
             href="/korean/review"
@@ -405,7 +410,7 @@ export default function KoreanReviewPage() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     );
   }
 
@@ -421,7 +426,7 @@ export default function KoreanReviewPage() {
     const errorStats = getErrorTypeStats(unresolvedMistakes);
 
     return (
-      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
+      <div className={embedded ? "" : "min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900"}>
         <div className="max-w-3xl mx-auto px-4 py-8">
           <button
             onClick={() => { setViewMode("queue"); setErrorTypeFilter(null); }}
@@ -538,20 +543,30 @@ export default function KoreanReviewPage() {
             </div>
           )}
         </div>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
+    <div className={embedded ? "" : "min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900"}>
       <div className="max-w-3xl mx-auto px-4 py-8">
         <div className="mb-6">
-          <Link
-            href="/korean"
-            className="text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300 text-sm flex items-center gap-1 w-fit"
-          >
-            ← 返回课程概览
-          </Link>
+          {embedded ? (
+            <button
+              type="button"
+              onClick={onExit}
+              className="text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300 text-sm flex items-center gap-1 w-fit"
+            >
+              ← 返回课程地图
+            </button>
+          ) : (
+            <Link
+              href="/korean"
+              className="text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300 text-sm flex items-center gap-1 w-fit"
+            >
+              ← 返回课程概览
+            </Link>
+          )}
         </div>
 
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">复习中心</h1>
@@ -648,6 +663,10 @@ export default function KoreanReviewPage() {
           </motion.div>
         )}
       </div>
-    </main>
+    </div>
   );
+}
+
+export default function KoreanReviewPage() {
+  return <KoreanReviewCenter />;
 }

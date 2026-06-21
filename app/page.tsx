@@ -1,4 +1,5 @@
 import Link from "next/link";
+import KoreanReviewEmbed from "@/components/korean/KoreanReviewEmbed";
 
 const learningLoop = [
   {
@@ -160,6 +161,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <KoreanReviewEmbed />
 
       <section className="border-y border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900/50">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">

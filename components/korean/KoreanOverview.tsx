@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { koreanModules } from "@/lib/korean-types";
 import { useKoreanProgress } from "@/lib/korean-progress";
 import { SKILL_CONFIG, type SkillCategory } from "@/lib/korean-progress-core";
 import ClientOnly from "@/components/ClientOnly";
+import { KoreanReviewCenter } from "@/app/korean/review/page";
 
 const MODULE_GRADIENTS = [
   "from-indigo-500 to-purple-600",
@@ -25,6 +27,7 @@ const SKILL_BAR_COLORS: Record<SkillCategory, string> = {
 };
 
 export default function KoreanOverview() {
+  const [activeView, setActiveView] = useState<"course" | "review">("course");
   const {
     completedLessons, getDueReviews, getLessonProgress,
     getUnresolvedMistakes, getStreak, getWeeklyStats, getSkillMasteryStats, getNextStepInfo,
@@ -74,6 +77,43 @@ export default function KoreanOverview() {
           </p>
         </motion.div>
 
+        <div className="mb-8 flex rounded-2xl border border-gray-200 bg-white p-1.5 shadow-sm dark:border-gray-700 dark:bg-gray-800" role="tablist" aria-label="韩语学习区域">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={activeView === "course"}
+            onClick={() => setActiveView("course")}
+            className={`flex-1 rounded-xl px-4 py-2.5 text-sm font-bold transition-colors ${
+              activeView === "course"
+                ? "bg-indigo-600 text-white"
+                : "text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
+            }`}
+          >
+            📚 课程地图
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={activeView === "review"}
+            onClick={() => setActiveView("review")}
+            className={`flex-1 rounded-xl px-4 py-2.5 text-sm font-bold transition-colors ${
+              activeView === "review"
+                ? "bg-indigo-600 text-white"
+                : "text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
+            }`}
+          >
+            🧠 复习中心
+            {(dueReviews.length > 0 || unresolvedMistakes.length > 0) && (
+              <span className="ml-1.5 rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] text-white">
+                {dueReviews.length + unresolvedMistakes.length}
+              </span>
+            )}
+          </button>
+        </div>
+
+        {activeView === "course" ? (
+          <>
+
         <ClientOnly>
           {/* === Dashboard: Today's Tasks === */}
           <motion.div
@@ -104,8 +144,9 @@ export default function KoreanOverview() {
 
               {/* Due reviews */}
               {dueReviews.length > 0 && (
-                <Link
-                  href="/korean/review"
+                <button
+                  type="button"
+                  onClick={() => setActiveView("review")}
                   className="flex items-center gap-3 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/30 hover:border-amber-400 dark:hover:border-amber-600 transition-all group"
                 >
                   <span className="text-2xl">📅</span>
@@ -116,13 +157,14 @@ export default function KoreanOverview() {
                     </p>
                   </div>
                   <span className="ml-auto text-amber-400 group-hover:text-amber-600 transition-colors">→</span>
-                </Link>
+                </button>
               )}
 
               {/* Unresolved mistakes */}
               {unresolvedMistakes.length > 0 && (
-                <Link
-                  href="/korean/review"
+                <button
+                  type="button"
+                  onClick={() => setActiveView("review")}
                   className="flex items-center gap-3 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/30 hover:border-red-400 dark:hover:border-red-600 transition-all group"
                 >
                   <span className="text-2xl">📝</span>
@@ -133,7 +175,7 @@ export default function KoreanOverview() {
                     </p>
                   </div>
                   <span className="ml-auto text-red-400 group-hover:text-red-600 transition-colors">→</span>
-                </Link>
+                </button>
               )}
 
               {/* All done */}
@@ -390,6 +432,10 @@ export default function KoreanOverview() {
             </motion.div>
           ))}
         </div>
+          </>
+        ) : (
+          <KoreanReviewCenter embedded onExit={() => setActiveView("course")} />
+        )}
       </div>
     </main>
   );
