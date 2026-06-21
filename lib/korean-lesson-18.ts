@@ -185,4 +185,13 @@ export const koreanLesson18Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用愿望表达造句",
+    instructionsEn: "Create sentences expressing desires",
+    targetGrammar: "고 싶다, -(으)면 좋겠다",
+    prompts: ["说你想做什么", "说你想要什么", "说如果...就好了"],
+    sampleAnswers: ["한국에 가고 싶어요.", "새 노트북을 사고 싶어요.", "날씨가 좋으면 좋겠어요."],
+    keyWords: ["싶어요", "싶다", "좋겠어요"],
+  },
 };

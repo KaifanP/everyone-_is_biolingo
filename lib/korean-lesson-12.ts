@@ -192,4 +192,13 @@ export const koreanLesson12Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用基本动词造句",
+    instructionsEn: "Create sentences with basic verb conjugation",
+    targetGrammar: "动词 + 아요/어요",
+    prompts: ["说你今天做什么", "说你喜欢做什么", "说你周末做什么"],
+    sampleAnswers: ["오늘 책을 읽어요.", "음악을 들어요.", "주말에 친구를 만나요."],
+    keyWords: ["읽어요", "들어요", "만나요", "먹어요", "가요"],
+  },
 };

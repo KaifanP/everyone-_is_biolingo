@@ -186,4 +186,13 @@ export const koreanLesson22Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用能力和许可表达造句",
+    instructionsEn: "Create sentences about ability and permission",
+    targetGrammar: "-(으)ㄹ 수 있다/없다",
+    prompts: ["说你能做什么", "说你不能做什么", "请求许可"],
+    sampleAnswers: ["한국어를 할 수 있어요.", "매운 음식을 못 먹어요.", "여기 앉아도 돼요?"],
+    keyWords: ["수 있어요", "수 없어요", "돼요", "안 돼요"],
+  },
 };

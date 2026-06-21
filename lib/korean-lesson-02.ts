@@ -218,4 +218,12 @@ export const koreanLesson02Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "oral-response",
+    instructions: "用韩语拼读以下音节",
+    instructionsEn: "Read the following syllables aloud in Korean",
+    prompt: "请大声拼读：고, 누, 미, 세, 히, 코, 네, 피",
+    sampleAnswer: "고(go), 누(nu), 미(mi), 세(se), 히(hi), 코(ko), 네(ne), 피(pi)",
+    keyPhrases: ["고", "누", "미", "세", "히"],
+  },
 };

@@ -193,4 +193,13 @@ export const koreanLesson17Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用将来时和计划表达造句",
+    instructionsEn: "Create sentences about future plans",
+    targetGrammar: "-(으)ㄹ 거예요, -(으)려고 하다",
+    prompts: ["说你明天打算做什么", "说你假期计划做什么", "说你将来想做什么"],
+    sampleAnswers: ["내일 친구를 만날 거예요.", "방학에 여행을 갈 거예요.", "나중에 선생님이 되려고 해요."],
+    keyWords: ["거예요", "려고", "계획", "打算"],
+  },
 };

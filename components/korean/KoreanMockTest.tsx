@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { KoreanMockTestSection } from "@/lib/korean-types";
+import { KoreanMockTestSection, MistakeSourceType } from "@/lib/korean-types";
 import { useKoreanProgress } from "@/lib/korean-progress";
 import KoreanAudioPlayer from "./KoreanAudioPlayer";
 import confetti from "canvas-confetti";
@@ -19,7 +19,7 @@ export default function KoreanMockTest({ mockTest, lessonId }: Props) {
   const [score, setScore] = useState(0);
   const [showExplanations, setShowExplanations] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const { updateLessonScore } = useKoreanProgress();
+  const { updateLessonScore, recordMistake } = useKoreanProgress();
 
   const getQuestions = useCallback((mode: "pbt" | "ibt") => {
     return mode === "pbt"
@@ -47,11 +47,25 @@ export default function KoreanMockTest({ mockTest, lessonId }: Props) {
     });
     setScore(correct);
     updateLessonScore(lessonId, correct, questions.length);
+    questions.forEach((q, qi) => {
+      if (answers[q.number] !== q.answer) {
+        recordMistake(
+          lessonId,
+          "mockTest" as MistakeSourceType,
+          `mock-${q.section}`,
+          q.question,
+          answers[q.number] ?? "",
+          q.answer,
+          q.options,
+          qi,
+        );
+      }
+    });
     if (correct === questions.length) {
       confetti({ particleCount: 150, spread: 80, origin: { y: 0.7 } });
     }
     setPhase("result");
-  }, [answers, questions, lessonId, updateLessonScore]);
+  }, [answers, questions, lessonId, updateLessonScore, recordMistake]);
 
   useEffect(() => {
     if (phase !== "test") return;

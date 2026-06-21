@@ -201,4 +201,13 @@ export const koreanLesson15Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用疑问词和并列表达造句",
+    instructionsEn: "Create sentences with question words and coordination",
+    targetGrammar: "무엇/어디/누구/언제, 그리고/하지만",
+    prompts: ["问对方喜欢什么", "说你去了哪里但是...", "问对方是谁"],
+    sampleAnswers: ["뭘 좋아해요?", "서울에 갔지만 비가 왔어요.", "이 사람이 누구예요?"],
+    keyWords: ["뭐", "어디", "누구", "언제", "그리고", "하지만"],
+  },
 };

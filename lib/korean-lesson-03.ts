@@ -229,4 +229,12 @@ export const koreanLesson03Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "oral-response",
+    instructions: "练习发音送气辅音和紧辅音",
+    instructionsEn: "Practice aspirated and tense consonant sounds",
+    prompt: "请对比朗读：파-바-빠, 타-다-따, 카-가-까, 차-자-짜",
+    sampleAnswer: "파(pa)-바(ba)-빠(ppa), 타(ta)-다(da)-따(tta), 카(ka)-가(ga)-까(kka), 차(cha)-자(ja)-짜(jja)",
+    keyPhrases: ["파", "바", "빠", "타", "다", "따"],
+  },
 };

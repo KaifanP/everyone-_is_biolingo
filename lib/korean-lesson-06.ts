@@ -200,4 +200,12 @@ export const koreanLesson06Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "oral-response",
+    instructions: "用韩语做自我介绍",
+    instructionsEn: "Introduce yourself in Korean",
+    prompt: "请用韩语介绍自己：你的名字、来自哪里、很高兴认识对方",
+    sampleAnswer: "안녕하세요! 저는 [이름]입니다. 중국에서 왔습니다. 만나서 반갑습니다.",
+    keyPhrases: ["저는", "입니다", "에서 왔습니다", "반갑습니다"],
+  },
 };

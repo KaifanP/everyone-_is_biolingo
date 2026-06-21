@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // One-off content audit scripts use CommonJS and are not shipped.
+    "check_*.js",
   ]),
 ]);
 

@@ -192,4 +192,12 @@ export const koreanLesson27Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "oral-response",
+    instructions: "练习公共场所表达",
+    instructionsEn: "Practice public life expressions",
+    prompt: "请用韩语说：请问最近的地铁站在哪里？/ 我想买去釜山的票 / 请问这个多少钱？",
+    sampleAnswer: "가장 가까운 지하철역이 어디예요? / 부산으로 가는 표를 사고 싶어요. / 이거 얼마예요?",
+    keyPhrases: ["어디예요", "사고 싶어요", "얼마예요"],
+  },
 };

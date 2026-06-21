@@ -196,4 +196,13 @@ export const koreanLesson16Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用过去时造句",
+    instructionsEn: "Create sentences using past tense",
+    targetGrammar: "았/었어요",
+    prompts: ["说你昨天做了什么", "说你上周末做了什么", "说你小时候喜欢做什么"],
+    sampleAnswers: ["어제 영화를 봤어요.", "지난주말에 친구를 만났어요.", "어릴 때 축구를 좋아했어요."],
+    keyWords: ["봤어요", "먹었어요", "갔어요", "했어요", "였어요"],
+  },
 };

@@ -185,4 +185,13 @@ export const koreanLesson23Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用义务和禁止表达造句",
+    instructionsEn: "Create sentences about obligation and prohibition",
+    targetGrammar: "-아/어야 하다, -지 마세요",
+    prompts: ["说你必须做什么", "说你不应该做什么", "对别人说什么不要做"],
+    sampleAnswers: ["내일 일찍 일어나야 해요.", "여기서 담배를 피우면 안 돼요.", "늦게 오지 마세요."],
+    keyWords: ["해야 해요", "안 돼요", "지 마세요"],
+  },
 };

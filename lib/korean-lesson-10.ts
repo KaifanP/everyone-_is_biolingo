@@ -215,4 +215,13 @@ export const koreanLesson10Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用汉字词数字说日期和时间",
+    instructionsEn: "Use Sino-Korean numbers for dates and times",
+    targetGrammar: "数字 + 월/일/시",
+    prompts: ["说今天的日期", "说你的生日", "说现在大约几点"],
+    sampleAnswers: ["오늘은 이월 이십일 일이에요.", "제 생일은 삼월 십오 일이에요.", "지금 두 시예요."],
+    keyWords: ["월", "일", "시", "년"],
+  },
 };

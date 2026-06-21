@@ -213,4 +213,13 @@ export const koreanLesson09Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用存在表达和位置词造句",
+    instructionsEn: "Create sentences about existence and location",
+    targetGrammar: "있다/없다, 에",
+    prompts: ["说某物在哪里", "说某处没有某物", "描述你的房间有什么"],
+    sampleAnswers: ["책상 위에 컴퓨터가 있어요.", "냉장고에 우유가 없어요.", "방에 침대가 있어요."],
+    keyWords: ["있어요", "없어요", "위에", "아래에", "안에"],
+  },
 };

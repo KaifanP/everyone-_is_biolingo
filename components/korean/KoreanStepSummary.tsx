@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { KoreanLesson } from "@/lib/korean-types";
+import { KoreanLesson, MistakeSourceType } from "@/lib/korean-types";
 import { useState, useEffect, useRef } from "react";
 import confetti from "canvas-confetti";
 import { useKoreanProgress } from "@/lib/korean-progress";
@@ -70,7 +70,7 @@ function MindMapTree({ text }: { text: string }) {
 
 export default function KoreanStepSummary({ data }: Props) {
   const { summary } = data;
-  const { markLessonCompleted, updateLessonScore, completeReview, getLessonProgress } = useKoreanProgress();
+  const { markLessonCompleted, updateLessonScore, completeReview, getLessonProgress, recordMistake } = useKoreanProgress();
   const savedAttemptRef = useRef(false);
   const [quizAnswers, setQuizAnswers] = useState<(string | null)[]>(
     new Array(summary.selfTest.length).fill(null)
@@ -92,28 +92,46 @@ export default function KoreanStepSummary({ data }: Props) {
   const hasReachedMastery = correctCount >= masteryThreshold;
 
   useEffect(() => {
-    if (showResults && hasReachedMastery && !savedAttemptRef.current) {
+    if (showResults && !savedAttemptRef.current) {
       savedAttemptRef.current = true;
-      if (!existingProgress?.completed) {
-        markLessonCompleted(data.info.id, correctCount, summary.selfTest.length);
-      } else {
-        updateLessonScore(data.info.id, correctCount, summary.selfTest.length);
-        const isDue = existingProgress.nextReviewAt && new Date(existingProgress.nextReviewAt) <= new Date();
-        if (isDue) {
-          const reviewType = !existingProgress.review1Day ? "1day" : !existingProgress.review7Day ? "7day" : "30day";
-          completeReview(data.info.id, reviewType, correctCount);
+      summary.selfTest.forEach((q, qi) => {
+        if (quizAnswers[qi] !== q.answer) {
+          recordMistake(
+            data.info.id,
+            "selfTest" as MistakeSourceType,
+            "self-test",
+            q.question,
+            quizAnswers[qi] ?? "",
+            q.answer,
+            q.options,
+            qi,
+          );
+        }
+      });
+      if (hasReachedMastery) {
+        if (!existingProgress?.completed) {
+          markLessonCompleted(data.info.id, correctCount, summary.selfTest.length);
+        } else {
+          updateLessonScore(data.info.id, correctCount, summary.selfTest.length);
+          // If this is a next-day review pass and lesson is not yet mastered, celebrate mastery
+          if (existingProgress.completed && !existingProgress.mastered) {
+            const isDue = existingProgress.nextReviewAt && new Date(existingProgress.nextReviewAt) <= new Date();
+            if (isDue) {
+              completeReview(data.info.id, correctCount, summary.selfTest.length, []);
+              // This will set mastered = true
+              confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ["#10b981", "#3b82f6", "#f59e0b", "#8b5cf6"],
+              });
+            }
+          }
         }
       }
-      if (correctCount === summary.selfTest.length) {
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ["#10b981", "#3b82f6", "#f59e0b", "#8b5cf6"],
-        });
-      }
     }
-  }, [showResults, hasReachedMastery, correctCount, summary.selfTest.length, markLessonCompleted, updateLessonScore, completeReview, existingProgress, data.info.id]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showResults, hasReachedMastery, correctCount, summary.selfTest.length, markLessonCompleted, updateLessonScore, completeReview, existingProgress, data.info.id, recordMistake, quizAnswers]);
 
   return (
     <div className="space-y-8">
@@ -190,6 +208,16 @@ export default function KoreanStepSummary({ data }: Props) {
           <div className="mb-4 p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl border border-indigo-200 dark:border-indigo-800/30">
             <p className="text-sm text-indigo-700 dark:text-indigo-300">
               历史最佳：{existingProgress.bestScore}/{existingProgress.totalQuestions}
+              {existingProgress.mastered && (
+                <span className="ml-2 px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 rounded-full text-xs font-medium">
+                  已掌握
+                </span>
+              )}
+              {existingProgress.completed && !existingProgress.mastered && (
+                <span className="ml-2 px-2 py-0.5 bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-300 rounded-full text-xs font-medium">
+                  学完了
+                </span>
+              )}
               {existingProgress.nextReviewAt && (
                 <span className="ml-2 text-xs text-indigo-500">
                   · 下次复习：{new Date(existingProgress.nextReviewAt).toLocaleDateString("zh-CN")}
@@ -280,12 +308,16 @@ export default function KoreanStepSummary({ data }: Props) {
                 {correctCount === summary.selfTest.length
                   ? " 🎉 满分！"
                   : hasReachedMastery
-                  ? " ✅ 本轮达标"
+                  ? existingProgress?.mastered
+                    ? " ✅ 已掌握"
+                    : " ✅ 学完了"
                   : " 🔁 还需要一次针对性复习"}
               </p>
               <p className="mt-2 max-w-xl text-sm leading-6 text-gray-600 dark:text-gray-300">
                 {hasReachedMastery
-                  ? "现在请完成一个不看示例的自主造句，并在 24 小时后重新测试。隔天仍能答对，才更接近长期掌握。"
+                  ? existingProgress?.mastered
+                    ? "你已经真正掌握了这课的内容！继续加油！"
+                    : "学好了！明天再来复习巩固一下，隔天仍能答对才算真正掌握。"
                   : `本轮达标线是 ${masteryThreshold}/${summary.selfTest.length}。不要立刻反复刷同一套题：先查看错题对应的讲解或辨析，解释错误原因后再重测。`}
               </p>
             </motion.div>

@@ -1,80 +1,24 @@
 "use client";
 import { useCallback, useMemo, useSyncExternalStore } from "react";
-
-const STORAGE_KEY = "biolingo_korean_progress";
-const CHANGE_EVENT = "biolingo-korean-progress-change";
-const CURRENT_VERSION = 2;
-
-interface LessonProgress {
-  completed: boolean;
-  bestScore: number;
-  totalQuestions: number;
-  lastAttemptAt: string;
-  nextReviewAt: string | null;
-  review1Day: boolean;
-  review7Day: boolean;
-  review30Day: boolean;
-  errorTypes: string[];
-}
-
-interface KoreanProgressData {
-  version: number;
-  completedLessons: string[];
-  lessonProgress: Record<string, LessonProgress>;
-  romanizationPreference: boolean;
-}
-
-function getDefaultProgress(): KoreanProgressData {
-  return {
-    version: CURRENT_VERSION,
-    completedLessons: [],
-    lessonProgress: {},
-    romanizationPreference: true,
-  };
-}
-
-function migrateFromV1(oldData: string[]): KoreanProgressData {
-  const progress = getDefaultProgress();
-  for (const lessonId of oldData) {
-    if (typeof lessonId === "string") {
-      progress.completedLessons.push(lessonId);
-      progress.lessonProgress[lessonId] = {
-        completed: true,
-        bestScore: 0,
-        totalQuestions: 0,
-        lastAttemptAt: new Date().toISOString(),
-        nextReviewAt: null,
-        review1Day: false,
-        review7Day: false,
-        review30Day: false,
-        errorTypes: [],
-      };
-    }
-  }
-  return progress;
-}
-
-function parseProgress(raw: string): KoreanProgressData {
-  try {
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed)) {
-      return migrateFromV1(parsed);
-    }
-    if (parsed && typeof parsed === "object" && parsed.version === CURRENT_VERSION) {
-      return parsed as KoreanProgressData;
-    }
-    if (parsed && typeof parsed === "object" && parsed.version === 1) {
-      const progress = getDefaultProgress();
-      progress.completedLessons = parsed.completedLessons || [];
-      progress.lessonProgress = parsed.lessonProgress || {};
-      progress.romanizationPreference = parsed.romanizationPreference ?? true;
-      return progress;
-    }
-    return getDefaultProgress();
-  } catch {
-    return getDefaultProgress();
-  }
-}
+import { KoreanMistakeRecord, KoreanExercise, MistakeSourceType } from "./korean-types";
+import {
+  getDefaultProgress,
+  parseProgress,
+  markLessonCompleted as _markLessonCompleted,
+  updateLessonScore as _updateLessonScore,
+  completeReview as _completeReview,
+  recordMistake as _recordMistake,
+  getReviewQuestions as _getReviewQuestions,
+  computeStreak,
+  getWeeklyAccuracy,
+  getSkillMastery,
+  getNextStep,
+  STORAGE_KEY,
+  CHANGE_EVENT,
+  type LessonProgress,
+  type KoreanProgressData,
+} from "./korean-progress-core";
+export type { SkillCategory, ReviewAttempt } from "./korean-progress-core";
 
 function getProgressSnapshot() {
   if (typeof window === "undefined") return JSON.stringify(getDefaultProgress());
@@ -91,7 +35,6 @@ function subscribeToProgress(onStoreChange: () => void) {
   };
   window.addEventListener("storage", handleStorage);
   window.addEventListener(CHANGE_EVENT, onStoreChange);
-
   return () => {
     window.removeEventListener("storage", handleStorage);
     window.removeEventListener(CHANGE_EVENT, onStoreChange);
@@ -101,12 +44,6 @@ function subscribeToProgress(onStoreChange: () => void) {
 function saveProgress(data: KoreanProgressData) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   window.dispatchEvent(new Event(CHANGE_EVENT));
-}
-
-function scheduleReviewDate(daysFromNow: number): string {
-  const d = new Date();
-  d.setDate(d.getDate() + daysFromNow);
-  return d.toISOString();
 }
 
 export function useKoreanProgress() {
@@ -119,81 +56,89 @@ export function useKoreanProgress() {
   const progress = useMemo(() => parseProgress(progressSnapshot), [progressSnapshot]);
 
   const markLessonCompleted = useCallback((lessonId: string, score?: number, totalQuestions?: number) => {
-    const current = parseProgress(getProgressSnapshot());
-    if (!current.completedLessons.includes(lessonId)) {
-      current.completedLessons.push(lessonId);
-    }
-
-    const existing = current.lessonProgress[lessonId];
-    const now = new Date().toISOString();
-
-    current.lessonProgress[lessonId] = {
-      completed: true,
-      bestScore: score !== undefined ? Math.max(score, existing?.bestScore ?? 0) : existing?.bestScore ?? 0,
-      totalQuestions: totalQuestions ?? existing?.totalQuestions ?? 0,
-      lastAttemptAt: now,
-      nextReviewAt: scheduleReviewDate(1),
-      review1Day: false,
-      review7Day: false,
-      review30Day: false,
-      errorTypes: existing?.errorTypes ?? [],
-    };
-
-    saveProgress(current);
+    saveProgress(_markLessonCompleted(parseProgress(getProgressSnapshot()), lessonId, score, totalQuestions));
   }, []);
 
-  const updateLessonScore = useCallback((lessonId: string, score: number, totalQuestions: number, errorTypes?: string[]) => {
-    const current = parseProgress(getProgressSnapshot());
-    const existing = current.lessonProgress[lessonId];
-    const now = new Date().toISOString();
-
-    current.lessonProgress[lessonId] = {
-      completed: existing?.completed ?? score / totalQuestions >= 0.8,
-      bestScore: Math.max(score, existing?.bestScore ?? 0),
-      totalQuestions,
-      lastAttemptAt: now,
-      nextReviewAt: existing?.nextReviewAt ?? null,
-      review1Day: existing?.review1Day ?? false,
-      review7Day: existing?.review7Day ?? false,
-      review30Day: existing?.review30Day ?? false,
-      errorTypes: errorTypes ?? existing?.errorTypes ?? [],
-    };
-
-    if (current.lessonProgress[lessonId].completed && !current.completedLessons.includes(lessonId)) {
-      current.completedLessons.push(lessonId);
-      current.lessonProgress[lessonId].nextReviewAt = scheduleReviewDate(1);
-    }
-
-    saveProgress(current);
+  const updateLessonScore = useCallback((lessonId: string, score: number, totalQuestions: number, mistakeIds?: string[]) => {
+    saveProgress(_updateLessonScore(parseProgress(getProgressSnapshot()), lessonId, score, totalQuestions, mistakeIds));
   }, []);
 
-  const completeReview = useCallback((lessonId: string, reviewType: "1day" | "7day" | "30day", score?: number) => {
-    const current = parseProgress(getProgressSnapshot());
-    const existing = current.lessonProgress[lessonId];
-    if (!existing) return;
-
-    if (reviewType === "1day") existing.review1Day = true;
-    if (reviewType === "7day") existing.review7Day = true;
-    if (reviewType === "30day") existing.review30Day = true;
-
-    if (score !== undefined) {
-      existing.bestScore = Math.max(score, existing.bestScore);
-    }
-
-    existing.lastAttemptAt = new Date().toISOString();
-
-    if (!existing.review1Day) {
-      existing.nextReviewAt = scheduleReviewDate(1);
-    } else if (!existing.review7Day) {
-      existing.nextReviewAt = scheduleReviewDate(6);
-    } else if (!existing.review30Day) {
-      existing.nextReviewAt = scheduleReviewDate(23);
-    } else {
-      existing.nextReviewAt = null;
-    }
-
-    saveProgress(current);
+  const completeReview = useCallback((
+    lessonId: string,
+    score: number,
+    total: number,
+    resolvedMistakeIds: string[],
+    reviewedMistakeIds?: string[]
+  ) => {
+    saveProgress(_completeReview(
+      parseProgress(getProgressSnapshot()),
+      lessonId,
+      score,
+      total,
+      resolvedMistakeIds,
+      reviewedMistakeIds
+    ));
   }, []);
+
+  const recordMistake = useCallback((
+    lessonId: string, sourceType: MistakeSourceType, exerciseType: string,
+    question: string, userAnswer: string, correctAnswer: string,
+    options?: string[], exerciseIndex?: number, itemIndex?: number,
+    matchingWrongPairs?: { left: string; right: string }[],
+    originalExercise?: KoreanExercise,
+    errorTag?: import("./korean-error-types").ErrorType
+  ) => {
+    saveProgress(_recordMistake(
+      parseProgress(getProgressSnapshot()), lessonId, sourceType, exerciseType,
+      question, userAnswer, correctAnswer, options, exerciseIndex, itemIndex,
+      matchingWrongPairs, originalExercise, errorTag
+    ));
+  }, []);
+
+  const resolveMistake = useCallback((mistakeId: string) => {
+    const current = parseProgress(getProgressSnapshot());
+    const record = current.mistakeRecords[mistakeId];
+    if (record && !record.resolved) {
+      record.resolved = true;
+      record.resolvedAt = new Date().toISOString();
+      saveProgress(current);
+    }
+  }, []);
+
+  const getDueReviewQueue = useCallback((): { lessonId: string; mistakes: KoreanMistakeRecord[] }[] => {
+    const now = new Date();
+    const result: { lessonId: string; mistakes: KoreanMistakeRecord[] }[] = [];
+    for (const [lessonId, lp] of Object.entries(progress.lessonProgress)) {
+      const due = lp.nextReviewAt && new Date(lp.nextReviewAt) <= now;
+      const unresolved = lp.mistakeIds
+        .map((id) => progress.mistakeRecords[id])
+        .filter((r): r is KoreanMistakeRecord => !!r && !r.resolved);
+      if (due || unresolved.length > 0) result.push({ lessonId, mistakes: unresolved });
+    }
+    return result;
+  }, [progress]);
+
+  const getUnresolvedMistakes = useCallback((): KoreanMistakeRecord[] => {
+    return Object.values(progress.mistakeRecords).filter((r) => !r.resolved);
+  }, [progress.mistakeRecords]);
+
+  const getReviewQuestions = useCallback((lessonId: string, selfTestQuestions?: { question: string; options: string[]; answer: string }[]): KoreanMistakeRecord[] => {
+    return _getReviewQuestions(
+      Object.values(progress.mistakeRecords),
+      lessonId,
+      selfTestQuestions
+    );
+  }, [progress.mistakeRecords]);
+
+  const recordReviewAttempt = useCallback((
+    lessonId: string,
+    score: number,
+    total: number,
+    mistakeIdsResolved: string[],
+    mistakeIdsReviewed?: string[]
+  ) => {
+    completeReview(lessonId, score, total, mistakeIdsResolved, mistakeIdsReviewed);
+  }, [completeReview]);
 
   const setRomanizationPreference = useCallback((show: boolean) => {
     const current = parseProgress(getProgressSnapshot());
@@ -202,30 +147,56 @@ export function useKoreanProgress() {
   }, []);
 
   const getDueReviews = useCallback((): string[] => {
-    const current = parseProgress(getProgressSnapshot());
     const now = new Date();
-    return Object.entries(current.lessonProgress)
-      .filter(([, prog]) => {
-        if (!prog.nextReviewAt) return false;
-        return new Date(prog.nextReviewAt) <= now;
-      })
+    return Object.entries(progress.lessonProgress)
+      .filter(([, prog]) => prog.nextReviewAt && new Date(prog.nextReviewAt) <= now)
       .map(([id]) => id);
-  }, []);
+  }, [progress.lessonProgress]);
 
   const getLessonProgress = useCallback((lessonId: string): LessonProgress | undefined => {
-    const current = parseProgress(getProgressSnapshot());
-    return current.lessonProgress[lessonId];
-  }, []);
+    return progress.lessonProgress[lessonId];
+  }, [progress.lessonProgress]);
+
+  const getMistakeRecord = useCallback((mistakeId: string): KoreanMistakeRecord | undefined => {
+    return progress.mistakeRecords[mistakeId];
+  }, [progress.mistakeRecords]);
+
+  const getUnresolvedMistakesForLesson = useCallback((lessonId: string): KoreanMistakeRecord[] => {
+    return Object.values(progress.mistakeRecords).filter(
+      (r) => r.lessonId === lessonId && !r.resolved
+    );
+  }, [progress.mistakeRecords]);
+
+  const getTotalUnresolvedCount = useCallback((): number => {
+    return Object.values(progress.mistakeRecords).filter((r) => !r.resolved).length;
+  }, [progress.mistakeRecords]);
+
+  const getStreak = useCallback((): number => {
+    return computeStreak(progress.dailyActivity);
+  }, [progress.dailyActivity]);
+
+  const getWeeklyStats = useCallback((): { correct: number; total: number } => {
+    return getWeeklyAccuracy(progress.reviewHistory);
+  }, [progress.reviewHistory]);
+
+  const getSkillMasteryStats = useCallback(() => {
+    return getSkillMastery(progress.lessonProgress);
+  }, [progress.lessonProgress]);
+
+  const getNextStepInfo = useCallback(() => {
+    return getNextStep(progress.lessonProgress, progress.completedLessons, progress.mistakeRecords);
+  }, [progress.lessonProgress, progress.completedLessons, progress.mistakeRecords]);
 
   return {
     completedLessons: progress.completedLessons,
     lessonProgress: progress.lessonProgress,
     romanizationPreference: progress.romanizationPreference,
-    markLessonCompleted,
-    updateLessonScore,
-    completeReview,
-    setRomanizationPreference,
-    getDueReviews,
-    getLessonProgress,
+    mistakeRecords: progress.mistakeRecords,
+    markLessonCompleted, updateLessonScore, completeReview, recordMistake,
+    resolveMistake, getDueReviewQueue, recordReviewAttempt,
+    setRomanizationPreference, getDueReviews, getLessonProgress,
+    getMistakeRecord, getUnresolvedMistakesForLesson, getTotalUnresolvedCount,
+    getUnresolvedMistakes, getReviewQuestions,
+    getStreak, getWeeklyStats, getSkillMasteryStats, getNextStepInfo,
   };
 }

@@ -191,4 +191,13 @@ export const koreanLesson07Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用指示代词造句",
+    instructionsEn: "Create sentences using demonstratives",
+    targetGrammar: "이/그/저 + 名词",
+    prompts: ["介绍你身边的一样东西", "指远处的一样东西", "问一个问题"],
+    sampleAnswers: ["이것은 책입니다.", "저것은 컴퓨터입니다.", "이게 뭐예요?"],
+    keyWords: ["이것", "그것", "저것", "이", "그", "저"],
+  },
 };

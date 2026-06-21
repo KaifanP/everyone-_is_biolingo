@@ -204,4 +204,13 @@ export const koreanLesson24Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用比较和天气表达造句",
+    instructionsEn: "Create sentences about comparison and weather",
+    targetGrammar: "보다, 더/덜, 날씨가 ...다",
+    prompts: ["比较两样东西", "说天气怎么样", "说你喜欢什么更多"],
+    sampleAnswers: ["사과가 바나나보다 맛있어요.", "오늘 날씨가 추워요.", "여름보다 겨울을 더 좋아해요."],
+    keyWords: ["보다", "더", "덜", "날씨"],
+  },
 };

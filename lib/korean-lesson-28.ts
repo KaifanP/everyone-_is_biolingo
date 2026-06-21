@@ -192,4 +192,12 @@ export const koreanLesson28Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "oral-response",
+    instructions: "练习阅读理解策略",
+    instructionsEn: "Practice reading comprehension strategies",
+    prompt: "请读以下短文并用韩语回答问题：'민수는 학생입니다. 매일 아침 커피를 마셔요.' 民수每天早上做什么？",
+    sampleAnswer: "민수는 매일 아침 커피를 마셔요.",
+    keyPhrases: ["매일", "아침", "마셔요"],
+  },
 };

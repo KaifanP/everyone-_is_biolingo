@@ -200,4 +200,13 @@ export const koreanLesson08Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用은/는, 이/가, 도造句",
+    instructionsEn: "Create sentences using topic/subject particles and 도",
+    targetGrammar: "은/는, 이/가, 도",
+    prompts: ["介绍你的身份", "说某样东西也在", "描述什么是什么"],
+    sampleAnswers: ["저는 학생입니다.", "고양이도 좋아해요.", "이것이 사과입니다."],
+    keyWords: ["은", "는", "이", "가", "도"],
+  },
 };

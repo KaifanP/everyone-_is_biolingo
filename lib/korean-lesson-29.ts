@@ -192,4 +192,12 @@ export const koreanLesson29Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "oral-response",
+    instructions: "练习听力理解策略",
+    instructionsEn: "Practice listening comprehension strategies",
+    prompt: "请听以下句子的TTS并复述：'오늘 날씨가 좋아서 공원에 갔어요.'",
+    sampleAnswer: "오늘 날씨가 좋아서 공원에 갔어요.",
+    keyPhrases: ["날씨", "좋아서", "공원", "갔어요"],
+  },
 };

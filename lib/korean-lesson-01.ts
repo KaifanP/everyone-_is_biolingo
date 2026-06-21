@@ -215,4 +215,12 @@ export const koreanLesson01Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "oral-response",
+    instructions: "大声读出以下韩文字母和音节",
+    instructionsEn: "Read the following Korean letters and syllables aloud",
+    prompt: "请大声读出以下韩文音节：가, 나, 다, 라, 마, 바, 사, 아",
+    sampleAnswer: "가(ga), 나(na), 다(da), 라(la), 마(ma), 바(ba), 사(sa), 아(a)",
+    keyPhrases: ["가", "나", "다", "라", "마", "바", "사", "아"],
+  },
 };

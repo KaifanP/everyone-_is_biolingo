@@ -6,13 +6,22 @@ import { KOREAN_STEP_LABELS } from "@/lib/korean-types";
 interface Props {
   currentStep: number;
   onStepChange: (step: number) => void;
+  hasOutput?: boolean;
   hasMockTest?: boolean;
 }
 
-export default function KoreanStepNav({ currentStep, onStepChange, hasMockTest }: Props) {
-  const labels = hasMockTest
-    ? [...KOREAN_STEP_LABELS, { key: "mockTest" as const, label: "模拟测试", labelEn: "Mock Test", icon: "🎯" }]
-    : KOREAN_STEP_LABELS;
+export default function KoreanStepNav({ currentStep, onStepChange, hasOutput, hasMockTest }: Props) {
+  // Build labels: warmup, input, grammar, analysis, practice, [output], summary, [mockTest]
+  const labels: { key: string; label: string; labelEn: string; icon: string }[] = [];
+
+  for (const step of KOREAN_STEP_LABELS) {
+    // Skip the output label from the base labels if hasOutput is false
+    if (step.key === "output" && !hasOutput) continue;
+    labels.push(step);
+  }
+  if (hasMockTest) {
+    labels.push({ key: "mockTest", label: "模拟测试", labelEn: "Mock Test", icon: "🎯" });
+  }
 
   return (
     <div className="w-full overflow-x-auto no-scrollbar pb-2 pt-1 px-4 sm:px-0">

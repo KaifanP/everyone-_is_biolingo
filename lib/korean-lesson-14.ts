@@ -205,4 +205,13 @@ export const koreanLesson14Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用否定表达造句",
+    instructionsEn: "Create sentences using negation",
+    targetGrammar: "안 + 动词, 动词 + 지 않다",
+    prompts: ["说你不做什么", "说什么东西不是什么", "说你不喜欢什么"],
+    sampleAnswers: ["커피를 안 마셔요.", "이것은 사과가 아니에요.", "매운 음식을 좋아하지 않아요."],
+    keyWords: ["안", "아니에요", "않아요", "못"],
+  },
 };

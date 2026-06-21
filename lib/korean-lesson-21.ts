@@ -188,4 +188,12 @@ export const koreanLesson21Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "oral-response",
+    instructions: "练习请求和命令表达",
+    instructionsEn: "Practice requests and commands",
+    prompt: "请用韩语说以下句子：请给我一杯水 / 请等一下 / 请帮我看看这个",
+    sampleAnswer: "물 한 잔 주세요. / 잠깐만 기다려 주세요. / 이것 좀 봐 주세요.",
+    keyPhrases: ["주세요", "기다려 주세요", "봐 주세요"],
+  },
 };

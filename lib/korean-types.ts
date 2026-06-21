@@ -35,6 +35,42 @@ export interface KoreanVocabularyItem {
   };
 }
 
+import type { ErrorType } from "./korean-error-types";
+export type { ErrorType };
+
+export type MistakeSourceType = "practice" | "selfTest" | "mockTest" | "output";
+
+export interface KoreanMistakeRecord {
+  id: string;
+  lessonId: string;
+  sourceType: MistakeSourceType;
+  exerciseType: string;
+  question: string;
+  options?: string[];
+  userAnswer: string;
+  correctAnswer: string;
+  count: number;
+  createdAt: string;
+  lastWrongAt: string;
+  resolved: boolean;
+  resolvedAt?: string;
+  itemIndex?: number;
+  exerciseIndex?: number;
+  matchingWrongPairs?: { left: string; right: string }[];
+  originalExercise?: KoreanExercise;
+  errorType?: ErrorType;
+  autoExplanation?: string;
+  lastReviewedAt?: string;
+}
+
+export interface ReviewSession {
+  lessonId: string;
+  mistakes: KoreanMistakeRecord[];
+  currentIndex: number;
+  answers: Record<string, { userAnswer: string; isCorrect: boolean }>;
+  startedAt: string;
+}
+
 export interface KoreanGrammarPoint {
   name: string;
   nameEn: string;
@@ -59,6 +95,7 @@ export interface KoreanExerciseBase {
   type: string;
   instructions: string;
   instructionsEn: string;
+  errorTag?: ErrorType;
 }
 
 export interface KoreanListeningChoice extends KoreanExerciseBase {
@@ -126,6 +163,21 @@ export interface KoreanImageChoice extends KoreanExerciseBase {
   explanation?: string;
 }
 
+export interface KoreanOralResponse extends KoreanExerciseBase {
+  type: "oral-response";
+  prompt: string;
+  sampleAnswer: string;
+  keyPhrases: string[];
+}
+
+export interface KoreanSentenceCreation extends KoreanExerciseBase {
+  type: "sentence-creation";
+  targetGrammar: string;
+  prompts: string[];
+  sampleAnswers: string[];
+  keyWords: string[];
+}
+
 export type KoreanExercise =
   | KoreanListeningChoice
   | KoreanReadingChoice
@@ -133,7 +185,9 @@ export type KoreanExercise =
   | KoreanOrdering
   | KoreanFillIn
   | KoreanDictation
-  | KoreanImageChoice;
+  | KoreanImageChoice
+  | KoreanOralResponse
+  | KoreanSentenceCreation;
 
 export interface KoreanAudioAsset {
   id: string;
@@ -188,6 +242,7 @@ export interface KoreanLesson {
     keyQuestions: string[];
   };
   practice: KoreanExercise[];
+  outputTask?: KoreanOralResponse | KoreanSentenceCreation;
   summary: {
     keyPoints: { title: string; items: string[] }[];
     mindMap: string;
@@ -206,6 +261,7 @@ export const KOREAN_STEP_LABELS = [
   { key: "grammar", label: "规则拆解", labelEn: "Grammar", icon: "📖" },
   { key: "analysis", label: "易错辨析", labelEn: "Analysis", icon: "🔍" },
   { key: "practice", label: "听读练习", labelEn: "Practice", icon: "✏️" },
+  { key: "output", label: "输出任务", labelEn: "Output", icon: "🗣️" },
   { key: "summary", label: "检索总结", labelEn: "Summary", icon: "📋" },
 ] as const;
 

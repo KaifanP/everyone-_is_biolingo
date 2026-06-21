@@ -212,4 +212,13 @@ export const koreanLesson25Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用修饰语造句",
+    instructionsEn: "Create sentences using modifiers",
+    targetGrammar: "-(으)ㄴ/는/(으)ㄹ + 名词",
+    prompts: ["描述你认识的人", "描述你去过的地方", "描述你想买的东西"],
+    sampleAnswers: ["제가 아는 사람이에요.", "작년에 갔던 곳이에요.", "사고 싶은 책이에요."],
+    keyWords: ["은", "는", "ㄴ", "ㄹ"],
+  },
 };

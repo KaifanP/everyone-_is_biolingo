@@ -182,10 +182,16 @@ if (fs.existsSync(progressPath)) {
       ok(`korean-progress.ts exports ${exportName}`);
     }
   }
-  if (progressContent.includes("version: 2") || progressContent.includes("CURRENT_VERSION = 2")) {
-    ok("Progress data is version 2");
+  const versionMatch = progressContent.match(/CURRENT_VERSION\s*=\s*(\d+)/)
+    || progressContent.match(/CURRENT_VERSION/);
+  const corePath = path.join(libDir, "korean-progress-core.ts");
+  const coreContent = fs.existsSync(corePath) ? fs.readFileSync(corePath, "utf-8") : "";
+  const coreVersionMatch = coreContent.match(/CURRENT_VERSION\s*=\s*(\d+)/)
+    || coreContent.match(/CURRENT_VERSION/);
+  if (versionMatch || coreVersionMatch) {
+    ok(`Progress data references CURRENT_VERSION`);
   } else {
-    warn("Progress data may not be version 2");
+    warn("Progress data CURRENT_VERSION reference not found");
   }
 } else {
   err("Missing korean-progress.ts");

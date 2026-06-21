@@ -225,4 +225,12 @@ export const koreanLesson04Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "oral-response",
+    instructions: "练习收音发音",
+    instructionsEn: "Practice final consonant (batchim) pronunciation",
+    prompt: "请大声读出以下带收音的音节：밥, 책, 집, 꽃, 숲, 앉",
+    sampleAnswer: "밥(bap), 책(chaek), 집(jip), 꽃(kkot), 숲(sup), 앉(an)",
+    keyPhrases: ["밥", "책", "집", "꽃", "숲", "앉"],
+  },
 };

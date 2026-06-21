@@ -191,4 +191,13 @@ export const koreanLesson13Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用时间/场所助词造句",
+    instructionsEn: "Create sentences with time and place particles",
+    targetGrammar: "에, (으)로",
+    prompts: ["说你什么时候起床", "说你去哪里", "说你怎么去学校"],
+    sampleAnswers: ["아침 여덟 시에 일어나요.", "학교에 가요.", "버스로 학교에 가요."],
+    keyWords: ["에", "으로", "에서", "부터", "까지"],
+  },
 };

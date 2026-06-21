@@ -191,4 +191,13 @@ export const koreanLesson19Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用进行时和频率表达造句",
+    instructionsEn: "Create sentences using progressive and frequency expressions",
+    targetGrammar: "고 있다, 자주/가끔/매일",
+    prompts: ["说你现在正在做什么", "说你经常做什么", "说你偶尔做什么"],
+    sampleAnswers: ["지금 책을 읽고 있어요.", "매일 운동해요.", "가끔 영화를 봐요."],
+    keyWords: ["있어요", "매일", "자주", "가끔", "보통"],
+  },
 };

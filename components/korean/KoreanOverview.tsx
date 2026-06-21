@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { koreanModules } from "@/lib/korean-types";
 import { useKoreanProgress } from "@/lib/korean-progress";
+import { SKILL_CONFIG, type SkillCategory } from "@/lib/korean-progress-core";
+import ClientOnly from "@/components/ClientOnly";
 
 const MODULE_GRADIENTS = [
   "from-indigo-500 to-purple-600",
@@ -14,11 +16,32 @@ const MODULE_GRADIENTS = [
   "from-cyan-500 to-sky-600",
 ];
 
+const SKILL_BAR_COLORS: Record<SkillCategory, string> = {
+  alphabet: "bg-indigo-500",
+  vocabulary: "bg-emerald-500",
+  grammar: "bg-blue-500",
+  listening: "bg-purple-500",
+  reading: "bg-amber-500",
+};
+
 export default function KoreanOverview() {
-  const { completedLessons, getDueReviews, getLessonProgress } = useKoreanProgress();
+  const {
+    completedLessons, getDueReviews, getLessonProgress,
+    getUnresolvedMistakes, getStreak, getWeeklyStats, getSkillMasteryStats, getNextStepInfo,
+  } = useKoreanProgress();
   const allLessons = koreanModules.flatMap((module) => module.lessons);
-  const recommendedLesson = allLessons.find((lesson) => !completedLessons.includes(lesson.id)) ?? allLessons[0];
   const dueReviews = getDueReviews();
+  const masteredCount = allLessons.filter((l) => getLessonProgress(l.id)?.mastered).length;
+  const unresolvedMistakes = getUnresolvedMistakes();
+  const streak = getStreak();
+  const weeklyStats = getWeeklyStats();
+  const skillMastery = getSkillMasteryStats();
+  const nextStep = getNextStepInfo();
+
+  const lessonLookup: Record<string, (typeof allLessons)[0]> = {};
+  for (const l of allLessons) lessonLookup[l.id] = l;
+
+  const nextLessonInfo = nextStep ? lessonLookup[nextStep.lessonId] : null;
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
@@ -41,7 +64,7 @@ export default function KoreanOverview() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
           <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent mb-2">
             韩语入门课程
@@ -49,12 +72,198 @@ export default function KoreanOverview() {
           <p className="text-gray-500 dark:text-gray-400">
             Korean for Beginners · TOPIK I 基础入门
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 mt-3">
-            <p className="text-sm text-gray-400 dark:text-gray-500">
-              6个模块 · 30课 · 面向中文母语者
-            </p>
+        </motion.div>
+
+        <ClientOnly>
+          {/* === Dashboard: Today's Tasks === */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 p-5 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm"
+          >
+            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+              今日任务
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {/* New lesson */}
+              {nextStep?.type === "new" && nextLessonInfo && (
+                <Link
+                  href={`/korean/${nextStep.lessonId}`}
+                  className="flex items-center gap-3 p-4 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800/30 hover:border-indigo-400 dark:hover:border-indigo-600 transition-all group"
+                >
+                  <span className="text-2xl">📖</span>
+                  <div>
+                    <p className="text-sm font-bold text-indigo-700 dark:text-indigo-300">新课</p>
+                    <p className="text-xs text-indigo-500 dark:text-indigo-400">
+                      第{nextLessonInfo.number}课 · {nextLessonInfo.title}
+                    </p>
+                  </div>
+                  <span className="ml-auto text-indigo-400 group-hover:text-indigo-600 transition-colors">→</span>
+                </Link>
+              )}
+
+              {/* Due reviews */}
+              {dueReviews.length > 0 && (
+                <Link
+                  href="/korean/review"
+                  className="flex items-center gap-3 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/30 hover:border-amber-400 dark:hover:border-amber-600 transition-all group"
+                >
+                  <span className="text-2xl">📅</span>
+                  <div>
+                    <p className="text-sm font-bold text-amber-700 dark:text-amber-300">到期复习</p>
+                    <p className="text-xs text-amber-500 dark:text-amber-400">
+                      {dueReviews.length} 门课程需要复习
+                    </p>
+                  </div>
+                  <span className="ml-auto text-amber-400 group-hover:text-amber-600 transition-colors">→</span>
+                </Link>
+              )}
+
+              {/* Unresolved mistakes */}
+              {unresolvedMistakes.length > 0 && (
+                <Link
+                  href="/korean/review"
+                  className="flex items-center gap-3 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/30 hover:border-red-400 dark:hover:border-red-600 transition-all group"
+                >
+                  <span className="text-2xl">📝</span>
+                  <div>
+                    <p className="text-sm font-bold text-red-700 dark:text-red-300">未解决错题</p>
+                    <p className="text-xs text-red-500 dark:text-red-400">
+                      {unresolvedMistakes.length} 道错题待处理
+                    </p>
+                  </div>
+                  <span className="ml-auto text-red-400 group-hover:text-red-600 transition-colors">→</span>
+                </Link>
+              )}
+
+              {/* All done */}
+              {dueReviews.length === 0 && unresolvedMistakes.length === 0 && nextStep?.type !== "new" && (
+                <div className="col-span-full text-center py-6">
+                  <div className="text-3xl mb-2">🌟</div>
+                  <p className="text-sm font-bold text-gray-700 dark:text-gray-300">今日任务全部完成！</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">继续保持，明天再来复习巩固</p>
+                </div>
+              )}
+            </div>
+          </motion.div>
+
+          {/* === Next Step Recommendation === */}
+          {nextStep && nextLessonInfo && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05 }}
+              className="mb-6 p-5 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800/30"
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-2xl mt-0.5">
+                  {nextStep.type === "new" ? "🚀" : nextStep.type === "mastery" ? "🎯" : nextStep.type === "review" ? "🔄" : "💡"}
+                </span>
+                <div className="flex-1">
+                  <p className="text-sm font-bold text-indigo-700 dark:text-indigo-300">
+                    下一步：第{nextLessonInfo.number}课 · {nextLessonInfo.title}
+                  </p>
+                  <p className="text-sm text-indigo-600/80 dark:text-indigo-400/80 mt-1">
+                    {nextStep.reason}
+                  </p>
+                  <Link
+                    href={`/korean/${nextStep.lessonId}`}
+                    className="inline-flex mt-3 px-4 py-2 bg-indigo-600 text-white text-sm font-bold rounded-xl hover:bg-indigo-700 transition-colors"
+                  >
+                    {nextStep.type === "new" ? "开始学习" : "开始复习"} →
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* === Streak + Weekly Accuracy === */}
+          <div className="grid grid-cols-2 gap-3 mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm text-center"
+            >
+              <p className="text-3xl font-bold text-orange-500">{streak}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">连续学习天数</p>
+              {streak > 0 && (
+                <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-1">
+                  {streak >= 7 ? "坚持一周了！" : streak >= 3 ? "连续3天，继续保持！" : "好的开始！"}
+                </p>
+              )}
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.12 }}
+              className="p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm text-center"
+            >
+              {weeklyStats.total > 0 ? (
+                <>
+                  <p className="text-3xl font-bold text-emerald-500">
+                    {Math.round((weeklyStats.correct / weeklyStats.total) * 100)}%
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">本周正确率</p>
+                  <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-1">
+                    {weeklyStats.correct}/{weeklyStats.total} 题
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="text-3xl font-bold text-gray-300 dark:text-gray-600">—</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">本周正确率</p>
+                  <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-1">暂无复习记录</p>
+                </>
+              )}
+            </motion.div>
+          </div>
+
+          {/* === Skill Mastery === */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            className="mb-6 p-5 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm"
+          >
+            <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+              能力掌握度
+            </h2>
+            <div className="space-y-3">
+              {(Object.entries(SKILL_CONFIG) as [SkillCategory, typeof SKILL_CONFIG[SkillCategory]][]).map(([key, config]) => {
+                const skill = skillMastery[key];
+                return (
+                  <div key={key} className="flex items-center gap-3">
+                    <span className="text-lg w-7 text-center">{config.icon}</span>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                          {config.label}
+                        </span>
+                        <span className="text-xs text-gray-400 dark:text-gray-500">
+                          {skill.mastered}/{skill.total} 已掌握
+                        </span>
+                      </div>
+                      <div className="w-full h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full transition-all duration-1000 ease-out ${SKILL_BAR_COLORS[key]}`}
+                          style={{ width: `${skill.pct}%` }}
+                        />
+                      </div>
+                    </div>
+                    <span className="text-sm font-bold text-gray-400 dark:text-gray-500 w-10 text-right">
+                      {skill.pct}%
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          {/* === Completion Stats === */}
+          <div className="flex items-center justify-center gap-4 mb-8">
             {completedLessons.length > 0 && (
-              <div className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/20 px-3 py-1 rounded-full border border-emerald-100 dark:border-emerald-800/30">
+              <div className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/20 px-3 py-1.5 rounded-full border border-emerald-100 dark:border-emerald-800/30">
                 <span className="text-emerald-500 text-xs font-bold">
                   已完成 {completedLessons.length} / 30
                 </span>
@@ -64,88 +273,17 @@ export default function KoreanOverview() {
                     style={{ width: `${(completedLessons.length / 30) * 100}%` }}
                   />
                 </div>
+                {masteredCount > 0 && (
+                  <span className="text-emerald-600 dark:text-emerald-400 text-xs font-bold">
+                    · 已掌握 {masteredCount}
+                  </span>
+                )}
               </div>
             )}
           </div>
-        </motion.div>
+        </ClientOnly>
 
-        {dueReviews.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-2xl border border-amber-200 dark:border-amber-800/30"
-          >
-            <p className="text-sm font-bold text-amber-700 dark:text-amber-300 mb-2">
-              📅 今日待复习（{dueReviews.length} 课）
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {dueReviews.map((id) => {
-                const lesson = allLessons.find((l) => l.id === id);
-                if (!lesson) return null;
-                return (
-                  <Link
-                    key={id}
-                    href={`/korean/${id}`}
-                    className="text-xs px-3 py-1.5 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full hover:bg-amber-200 dark:hover:bg-amber-900/50 transition-colors"
-                  >
-                    第{lesson.number}课 · {lesson.title}
-                  </Link>
-                );
-              })}
-            </div>
-          </motion.div>
-        )}
-
-        <motion.section
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.08 }}
-          className="mb-10 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]"
-        >
-          <div className="rounded-2xl border border-indigo-100 bg-gradient-to-br from-indigo-50 to-purple-50 p-6 dark:border-indigo-800/40 dark:from-indigo-950/30 dark:to-purple-950/20">
-            <p className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
-              建议学习方式
-            </p>
-            <h2 className="mt-2 text-xl font-bold text-gray-900 dark:text-white">
-              每次只学一课，用 20–30 分钟走完闭环
-            </h2>
-            <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-xl bg-white/80 p-3 dark:bg-gray-900/60">
-                <p className="text-sm font-bold text-indigo-700 dark:text-indigo-300">学习前</p>
-                <p className="mt-1 text-xs leading-5 text-gray-600 dark:text-gray-300">先回答导入问题，不会也先猜；预测会让后面的讲解更容易被记住。</p>
-              </div>
-              <div className="rounded-xl bg-white/80 p-3 dark:bg-gray-900/60">
-                <p className="text-sm font-bold text-purple-700 dark:text-purple-300">学习中</p>
-                <p className="mt-1 text-xs leading-5 text-gray-600 dark:text-gray-300">重点比较容易混淆的选项；练习时先闭卷作答，再核对答案。</p>
-              </div>
-              <div className="rounded-xl bg-white/80 p-3 dark:bg-gray-900/60">
-                <p className="text-sm font-bold text-emerald-700 dark:text-emerald-300">学习后</p>
-                <p className="mt-1 text-xs leading-5 text-gray-600 dark:text-gray-300">自测达到 80%，并能自己造句解释，才算本轮掌握；隔天再测一次。</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800/80">
-            <p className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
-              {completedLessons.length > 0 ? "继续学习" : "推荐起点"}
-            </p>
-            <h2 className="mt-2 text-lg font-bold text-gray-900 dark:text-white">
-              第{recommendedLesson.number}课 · {recommendedLesson.title}
-            </h2>
-            <p className="mt-2 text-sm leading-6 text-gray-500 dark:text-gray-400">
-              {completedLessons.length > 0
-                ? "从上次进度继续。若某个模块正是你的薄弱点，也可以直接跳到对应模块。"
-                : "第一次学习建议从韩文字母开始；先建立地图，再进入具体规则。"}
-            </p>
-            <Link
-              href={`/korean/${recommendedLesson.id}`}
-              className="mt-5 inline-flex rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-indigo-700"
-            >
-              {completedLessons.length > 0 ? "继续这一课 →" : "开始第一课 →"}
-            </Link>
-          </div>
-        </motion.section>
-
+        {/* === Course Map === */}
         <div className="mb-6 flex flex-col gap-1">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">课程地图</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -202,25 +340,35 @@ export default function KoreanOverview() {
                         <Link
                           href={`/korean/${lesson.id}`}
                           className={`block p-4 rounded-xl transition-all group border ${
-                            completedLessons.includes(lesson.id)
-                              ? "bg-emerald-50 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/20"
+                            lessonProgress?.mastered
+                              ? "bg-emerald-50 dark:bg-emerald-900/10 border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100 dark:hover:bg-emerald-900/20"
+                              : lessonProgress?.completed
+                              ? "bg-yellow-50 dark:bg-yellow-900/10 border-yellow-200 dark:border-yellow-800/50 hover:bg-yellow-100 dark:hover:bg-yellow-900/20"
                               : "bg-gray-50 dark:bg-gray-700/30 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 border-transparent hover:border-indigo-200 dark:hover:border-indigo-800"
                           }`}
+                          suppressHydrationWarning
                         >
                           <div className="flex items-start justify-between">
                             <div>
                               <p className="text-xs font-medium text-gray-400 dark:text-gray-500 mb-1 flex items-center gap-1">
                                 第{lesson.number}课
-                                {completedLessons.includes(lesson.id) && (
-                                  <span className="text-emerald-500 text-[10px]">
-                                    ✅ 已完成
-                                  </span>
-                                )}
-                                {lessonProgress && lessonProgress.bestScore > 0 && (
-                                  <span className="text-indigo-500 text-[10px]">
-                                    最佳{lessonProgress.bestScore}/{lessonProgress.totalQuestions}
-                                  </span>
-                                )}
+                                <ClientOnly>
+                                  {lessonProgress?.mastered && (
+                                    <span className="text-emerald-600 dark:text-emerald-400 text-[10px] font-bold">
+                                      ✅ 已掌握
+                                    </span>
+                                  )}
+                                  {lessonProgress?.completed && !lessonProgress?.mastered && (
+                                    <span className="text-yellow-600 dark:text-yellow-400 text-[10px] font-bold">
+                                      📖 学完了
+                                    </span>
+                                  )}
+                                  {lessonProgress && lessonProgress.bestScore > 0 && (
+                                    <span className="text-indigo-500 text-[10px]">
+                                      最佳{lessonProgress.bestScore}/{lessonProgress.totalQuestions}
+                                    </span>
+                                  )}
+                                </ClientOnly>
                               </p>
                               <p className="text-sm font-bold text-gray-800 dark:text-gray-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                                 {lesson.title}

@@ -188,4 +188,12 @@ export const koreanLesson26Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "oral-response",
+    instructions: "练习敬语表达",
+    instructionsEn: "Practice honorific expressions",
+    prompt: "请用敬语说：老师您去哪里？/ 您吃了吗？/ 请慢走",
+    sampleAnswer: "선생님 어디에 가세요? / 식사하셨어요? / 안녕히 가세요.",
+    keyPhrases: ["가세요", "드세요", "세요", "습니다"],
+  },
 };

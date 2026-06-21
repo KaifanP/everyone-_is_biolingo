@@ -241,4 +241,12 @@ export const koreanLesson05Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "oral-response",
+    instructions: "练习连音和音变",
+    instructionsEn: "Practice linking and sound changes",
+    prompt: "请大声读出以下词组，注意连音：한국어, 읽어요, 먹었어요",
+    sampleAnswer: "한국어(한구거), 읽어요(일거요), 먹었어요(머거써요)",
+    keyPhrases: ["한국어", "읽어요", "먹었어요"],
+  },
 };

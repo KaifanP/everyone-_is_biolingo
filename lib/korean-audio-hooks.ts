@@ -34,19 +34,24 @@ function waitForKoreanVoice(): Promise<SpeechSynthesisVoice | undefined> {
 export function useKoreanTTS() {
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [voiceName, setVoiceName] = useState<string | null>(null);
 
-  const play = useCallback(async (text: string) => {
+  const play = useCallback(async (text: string, rate = 0.85) => {
     if (typeof window === "undefined") return false;
     window.speechSynthesis.cancel();
 
     const koVoice = await waitForKoreanVoice();
 
-    if (!koVoice) return false;
+    if (!koVoice) {
+      setVoiceName(null);
+      return false;
+    }
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = TTS_LANG;
-    utterance.rate = 0.85;
+    utterance.rate = rate;
     utterance.voice = koVoice;
+    setVoiceName(`${koVoice.name} · ${koVoice.lang}`);
 
     utterance.onstart = () => setIsPlaying(true);
     utterance.onend = () => setIsPlaying(false);
@@ -63,7 +68,7 @@ export function useKoreanTTS() {
     setIsPlaying(false);
   }, []);
 
-  return { play, stop, isPlaying };
+  return { play, stop, isPlaying, voiceName };
 }
 
 export function useKoreanAudioPlayer() {
@@ -84,5 +89,5 @@ export function useKoreanAudioPlayer() {
     tts.stop();
   }, [tts]);
 
-  return { play, stop, isPlaying: tts.isPlaying, error };
+  return { play, stop, isPlaying: tts.isPlaying, voiceName: tts.voiceName, error };
 }

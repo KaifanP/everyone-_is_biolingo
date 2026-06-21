@@ -211,6 +211,15 @@ export const koreanLesson30Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "综合运用所学知识造句",
+    instructionsEn: "Create sentences using everything you've learned",
+    targetGrammar: "综合运用已学语法",
+    prompts: ["写一段自我介绍（3句以上）", "描述你的一天（3句以上）", "写一封信给韩国朋友"],
+    sampleAnswers: ["안녕하세요! 저는 중국에서 온 학생이에요. 한국어를 배우고 있어요. 한국 문화를 좋아해요.", "아침 여덟 시에 일어나요. 학교에 가서 공부해요. 저녁에 친구를 만나요.", "친구야, 안녕? 잘 지내? 나는 요즘 한국어를 열심히 공부하고 있어."],
+    keyWords: ["저는", "에서", "배우고", "좋아해요"],
+  },
   mockTest: {
     mode: "pbt",
     timeLimitMinutes: 35,

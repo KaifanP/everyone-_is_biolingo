@@ -206,4 +206,13 @@ export const koreanLesson11Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用固有数词和量词造句",
+    instructionsEn: "Create sentences with native Korean numbers and counters",
+    targetGrammar: "固有数词 + 量词",
+    prompts: ["说你有几个兄弟姐妹", "说你要买几个苹果", "说你几岁"],
+    sampleAnswers: ["형이 두 명 있어요.", "사과 세 개 주세요.", "스물다섯 살이에요."],
+    keyWords: ["하나", "둘", "셋", "명", "개", "살"],
+  },
 };

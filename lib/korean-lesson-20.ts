@@ -200,4 +200,13 @@ export const koreanLesson20Data: KoreanLesson = {
       },
     ],
   },
+  outputTask: {
+    type: "sentence-creation",
+    instructions: "用连接词尾造句",
+    instructionsEn: "Create sentences using connective endings",
+    targetGrammar: "-고, -아서/어서, -(으)면",
+    prompts: ["说你做了A然后做了B", "说因为A所以B", "说如果A就B"],
+    sampleAnswers: ["밥을 먹고 커피를 마셨어요.", "비가 와서 집에 있었어요.", "시간이 있으면 만나요."],
+    keyWords: ["고", "아서", "어서", "면"],
+  },
 };
